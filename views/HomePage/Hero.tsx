@@ -18,19 +18,16 @@ export default function Hero() {
       <Contents>
         <CustomOverTitle>{t('Narvan E-Commerce')}</CustomOverTitle>
         <Heading>Make your life easier with our Products</Heading>
-        <Description>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, tempora qui. Explicabo voluptate iure ipsum molestias
-          repudiandae perspiciatis nostrum praesentium, unde pariatur tempora magni rem. Necessitatibus facilis obcaecati ratione.
-        </Description>
+        <Description>text5</Description>
         <CustomButtonGroup>
-          <Button onClick={() => setIsModalOpened(true)}>
+          {/* <Button onClick={() => setIsModalOpened(true)}>
             Subscribe to the newsletter <span>&rarr;</span>
-          </Button>
-          <NextLink href="#whitepaper" passHref>
+          </Button> */}
+          {/* <NextLink href="#whitepaper" passHref>
             <Button transparent>
               Features <span>&rarr;</span>
             </Button>
-          </NextLink>
+          </NextLink> */}
         </CustomButtonGroup>
       </Contents>
       <ImageContainer>
