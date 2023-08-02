@@ -17,8 +17,8 @@ export default function Hero() {
     <HeroWrapper>
       <Contents>
         <CustomOverTitle>{t('Narvan E-Commerce')}</CustomOverTitle>
-        <Heading>Make your life easier with our Products</Heading>
-        <Description>text5</Description>
+        <Heading>{t('Make your life easier with our Products')}</Heading>
+        {/* <Description>text5</Description> */}
         <CustomButtonGroup>
           {/* <Button onClick={() => setIsModalOpened(true)}>
             Subscribe to the newsletter <span>&rarr;</span>

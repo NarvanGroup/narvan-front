@@ -1,5 +1,6 @@
 import { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import styled from 'styled-components';
 import BasicSection from 'components/BasicSection';
 import Link from 'components/Link';
@@ -12,42 +13,56 @@ import Hero from 'views/HomePage/Hero';
 import Partners from 'views/HomePage/Partners';
 import ScrollableBlogPosts from 'views/HomePage/ScrollableBlogPosts';
 import Testimonials from 'views/HomePage/Testimonials';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'react-i18next';
+import NarvanProducts from 'views/HomePage/NarvanProducts';
 
 export default function Homepage({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const { t } = useTranslation();
+
   return (
     <>
       <Head>
         <title>{EnvVars.SITE_NAME}</title>
-        <meta
-          name="description"
-          content="Tempor nostrud velit fugiat nostrud duis incididunt Lorem deserunt est tempor aute dolor ad elit."
-        />
+        <meta name="description" content="Narvan Group" />
       </Head>
       <HomepageWrapper>
         <WhiteBackgroundContainer>
           <Hero />
-          <Partners />
-          <BasicSection imageUrl="/demo-illustration-1.svg" title="Lorem ipsum dolor sit amet consectetur." overTitle="sit amet gogo">
-            <p>
-              text1. <Link href="/help-center">text2</Link> Lorem ipsum, dolor sit amet text3
-            </p>
+          {/* <Partners /> */}
+          <NarvanProducts />
+          <BasicSection imageUrl="/demo-illustration-1.svg" title={t('Your Trusted Partner in Global Trade')} overTitle={t('about Narvan')}>
+            <p>{t('about Narvan text')}</p>
           </BasicSection>
-          <BasicSection imageUrl="/demo-illustration-2.svg" title="Lorem ipsum dolor sit." overTitle="lorem ipsum" reversed>
-            <p>
-              text4 <strong>44444</strong>.444444444444
-            </p>
+          <BasicSection
+            imageUrl="/demo-illustration-2.svg"
+            title={t('with Narvan everything is possible')}
+            overTitle={t('Why Choose Narvan?')}
+            reversed
+          >
             <ul>
-              <li>Professional point 1</li>
-              <li>Professional remark 2</li>
-              <li>Professional feature 3ss</li>
+              <li>
+                <strong>{t('Global Reach')}: </strong>
+                <p>{t('Global Reach Text')}</p>
+              </li>
+              <li>
+                <strong>{t('Expert Team')}: </strong>
+                <p>{t('Expert Team Text')}</p>
+              </li>
+              <li>
+                <strong>{t('Tailored Solutions')}: </strong>
+                <p>{t('Tailored Solutions Text')}</p>
+              </li>
+              <li>
+                <strong>{t('Quality Assurance')}: </strong>
+                <p>{t('Quality Assurance Text')}</p>
+              </li>
             </ul>
           </BasicSection>
         </WhiteBackgroundContainer>
         <DarkerBackgroundContainer>
           <Cta />
           {/* <FeaturesGallery /> */}
-          <Features />
+          {/* <Features /> */}
           {/* <Testimonials /> */}
           {/* <ScrollableBlogPosts posts={posts} /> */}
         </DarkerBackgroundContainer>

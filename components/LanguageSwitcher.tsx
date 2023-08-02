@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 export default function LanguageSwitcher() {
   const router = useRouter();
@@ -7,6 +8,13 @@ export default function LanguageSwitcher() {
   const { locales, locale: activeLocale } = router;
 
   const otherLocales = locales?.filter((locale: string) => locale !== activeLocale && locale !== 'default');
+
+  useEffect(() => {
+    let dir = router.locale === 'fa' ? 'rtl' : 'ltr';
+    let lang = router.locale ? router.locale : 'en';
+    document?.querySelector('html')?.setAttribute('dir', dir);
+    document?.querySelector('html')?.setAttribute('lang', lang);
+  }, [router.locale]);
 
   return (
     <span className="text-muted cursor-pointer">

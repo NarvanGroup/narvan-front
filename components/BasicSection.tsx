@@ -71,6 +71,7 @@ const ImageContainer = styled.div`
 
 const ContentContainer = styled.div`
   flex: 1;
+  gap: 4px;
 `;
 
 type Props = Pick<BasicSectionProps, 'reversed'>;

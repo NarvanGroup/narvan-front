@@ -16,6 +16,7 @@ export default class MyDocument extends Document {
       const initialProps = await Document.getInitialProps(ctx);
       return {
         ...initialProps,
+        locale: ctx?.locale || 'en',
         styles: (
           <>
             {initialProps.styles}
@@ -30,7 +31,7 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang="en">
+      <Html dir={this.props.locale === 'fa' ? 'rtl' : 'ltr'} lang={this.props.locale}>
         <Head>
           <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
         </Head>

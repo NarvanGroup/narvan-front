@@ -184,6 +184,7 @@ const NavbarContainer = styled.div<NavbarContainerProps>`
   transition-property: transform, visibility, height, box-shadow, background-color;
   transition-duration: 0.15s;
   transition-timing-function: ease-in-out;
+  direction: ltr !important;
 `;
 
 const Content = styled(Container)`

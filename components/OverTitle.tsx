@@ -13,6 +13,7 @@ const OverTitle = styled.span`
     background-color: rgb(var(--primary));
     line-height: 0;
     margin-right: 1em;
+    margin-left: 1em;
   }
 
   font-size: 1.3rem;
