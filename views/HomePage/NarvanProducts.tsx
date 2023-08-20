@@ -30,44 +30,38 @@ export default function NarvanProducts({ posts }: ScrollableBlogPostsProps) {
     setHasMounted(true);
   }, []);
 
-  const PARTNER_LOGOS = [
-    'logoipsum-logo-1.svg',
-    'logoipsum-logo-2.svg',
-    'logoipsum-logo-3.svg',
-    'logoipsum-logo-4.svg',
-    'logoipsum-logo-5.svg',
-    'logoipsum-logo-6.svg',
-    'logoipsum-logo-7.svg',
-  ];
-
   return (
     <Section>
-      <Container>
-        <Content>
-          <OverTitle>{t('products')}</OverTitle>
-          <SectionTitle>What are you signing in for?</SectionTitle>
-        </Content>
-      </Container>
+      {categories?.map((cat) => (
+        <>
+          <Container>
+            <Content>
+              <OverTitle>{t('products')}</OverTitle>
+              <SectionTitle>{cat.title}</SectionTitle>
+            </Content>
+          </Container>
 
-      <SwiperContainer ref={ref}>
-        {hasMounted && (
-          <Swiper
-            modules={[Navigation, Autoplay, A11y]}
-            slidesPerView={3}
-            spaceBetween={10}
-            autoplay={{ delay: 8000 }}
-            centeredSlides
-            navigation
-            loop
-          >
-            {FEATURES.map((singleFeature) => (
-              <SwiperSlide key={singleFeature.title}>
-                <BasicCard key={singleFeature.title} {...singleFeature} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        )}
-      </SwiperContainer>
+          <SwiperContainer ref={ref}>
+            {hasMounted && (
+              <Swiper
+                modules={[Navigation, Autoplay, A11y]}
+                slidesPerView={3}
+                spaceBetween={10}
+                autoplay={{ delay: 8000 }}
+                centeredSlides
+                navigation
+                loop
+              >
+                {cat.products.map((product) => (
+                  <SwiperSlide key={product.name}>
+                    <BasicCard key={product.name} {...product} />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            )}
+          </SwiperContainer>
+        </>
+      ))}
     </Section>
   );
 }
@@ -105,6 +99,27 @@ const SwiperContainer = styled(Container)`
     padding: 0;
   }
 `;
+
+const categories = [
+  {
+    title: 'nozelles',
+    farsiName: 'نازل',
+    products: [
+      {
+        name: 'H11 single',
+        farsiName: 'نازل تکی',
+        price: 'call us',
+        imageUrl: '/grid-icons/asset-1.svg',
+        specification: [
+          {
+            diameter: '20cm',
+          },
+        ],
+        description: '',
+      },
+    ],
+  },
+];
 
 const FEATURES = [
   {
