@@ -12,6 +12,7 @@ import Container from './Container';
 import Drawer from './Drawer';
 import { HamburgerIcon } from './HamburgerIcon';
 import Logo from './Logo';
+import { useTranslation } from 'react-i18next';
 
 const ColorSwitcher = dynamic(() => import('../components/ColorSwitcher'), { ssr: false });
 
@@ -94,6 +95,8 @@ export default function Navbar({ items }: NavbarProps) {
 }
 
 function NavItem({ href, title, outlined }: SingleNavItem) {
+  const { t } = useTranslation();
+
   const { setIsModalOpened } = useNewsletterModalContext();
 
   function showNewsletterModal() {
@@ -107,7 +110,7 @@ function NavItem({ href, title, outlined }: SingleNavItem) {
   return (
     <NavItemWrapper outlined={outlined}>
       <NextLink href={href} passHref>
-        <a>{title}</a>
+        <a>{t(`${title}`)}</a>
       </NextLink>
     </NavItemWrapper>
   );

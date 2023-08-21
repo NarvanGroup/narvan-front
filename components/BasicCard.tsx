@@ -14,17 +14,12 @@ interface BasicCardProps {
 export default function BasicCard({ name, farsiName, description, imageUrl, specification }: BasicCardProps) {
   return (
     <Card>
-      <NextImage src={imageUrl} width={128} height={128} alt={name} />
+      <NextImage src={imageUrl} width={200} height={200} alt={name} />
       <Title>
         {name} - {farsiName}
       </Title>
       <Description>{description}</Description>
-      <hr />
-      {specification?.map((spec, index) => (
-        <Description key={index}>
-          {Object.keys(spec)}: {Object.values(spec)}
-        </Description>
-      ))}
+      <Specification>{specification?.map((spec, index) => `${spec} `)}</Specification>
     </Card>
   );
 }
@@ -39,11 +34,12 @@ const Card = styled.div`
   align-items: center;
   text-align: center;
   width: 100%;
-  max-width: 200px;
+  // max-width: 200px;
   border-radius: 0.6rem;
   color: rgb(var(--text));
   font-size: 1.6rem;
   margin: 8px;
+  cursor: pointer;
 
   & > *:not(:first-child) {
     margin-top: 1rem;
@@ -56,4 +52,11 @@ const Title = styled.div`
 
 const Description = styled.div`
   opacity: 0.6;
+`;
+
+const Specification = styled.div`
+  border-top: 3px solid var(--border1);
+  opacity: 0.6;
+  padding-top: 1rem;
+  width: 100%;
 `;

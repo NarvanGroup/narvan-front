@@ -28,6 +28,7 @@ export const GlobalStyle = createGlobalStyle`
   --modalBackground: 251,251,253;
   --errorColor: 207,34,46;
   --logoColor: #243A5A;
+  --border1: #EAECF0
 }
 
 .next-dark-theme {
@@ -81,6 +82,10 @@ dd {
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
 ul[role='list'],

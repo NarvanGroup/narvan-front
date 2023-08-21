@@ -19,9 +19,10 @@ import NewsletterModal from 'components/NewsletterModal';
 import WaveCta from 'components/WaveCta';
 import { NewsletterModalContextProvider, useNewsletterModalContext } from 'contexts/newsletter-modal.context';
 import { NavItems } from 'types';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const navItems: NavItems = [
-  { title: 'Awesome SaaS Features', href: '/features' },
+  { title: 'Products', href: '/products' },
   { title: 'Pricing', href: '/pricing' },
   { title: 'Contact', href: '/contact' },
   // { title: 'Sign up', href: '/sign-up', outlined: true },
@@ -93,3 +94,12 @@ function Modals() {
 }
 
 export default appWithTranslation(MyApp);
+
+export async function getStaticProps(context: { locale: any }) {
+  const { locale } = context;
+  return {
+    props: {
+      ...(await serverSideTranslations(locale)),
+    },
+  };
+}

@@ -12,6 +12,7 @@ import { SingleArticle } from 'types';
 import { media } from 'utils/media';
 import BasicCard from 'components/BasicCard';
 import { useTranslation } from 'react-i18next';
+import Link from 'next/link';
 
 interface ScrollableBlogPostsProps {
   posts: SingleArticle[];
@@ -40,15 +41,18 @@ export default function NarvanProducts({ posts }: ScrollableBlogPostsProps) {
               <SectionTitle>{cat.title}</SectionTitle>
             </Content>
           </Container>
+          <LinkContainer>
+            <Link href={`category/${cat.type}`}>{t('see all')}</Link>
+          </LinkContainer>
 
           <SwiperContainer ref={ref}>
             {hasMounted && (
               <Swiper
                 modules={[Navigation, Autoplay, A11y]}
-                slidesPerView={3}
-                spaceBetween={10}
+                slidesPerView={4}
+                spaceBetween={32}
                 autoplay={{ delay: 8000 }}
-                centeredSlides
+                // centeredSlides
                 navigation
                 loop
               >
@@ -78,6 +82,11 @@ const Content = styled.div`
   }
 `;
 
+const LinkContainer = styled.div`
+  margin: 0 5rem;
+  font-size: 16px;
+`;
+
 const Section = styled.section`
   display: flex;
   flex-direction: column;
@@ -100,80 +109,225 @@ const SwiperContainer = styled(Container)`
   }
 `;
 
+const nozzleTypes = {
+  Single: 'Single',
+  Chromed: 'Chromed',
+  Double: 'Double',
+  HighSpeed: 'HighSpeed',
+};
+
+const categoryTypes = {
+  nozzles: 'Nozzles',
+  weldingNozzle: 'welding Nozzle',
+};
+
 const categories = [
   {
-    title: 'nozelles',
+    type: categoryTypes.nozzles,
+    title: categoryTypes.nozzles,
     farsiName: 'نازل',
     products: [
       {
         name: 'H11 single',
         farsiName: 'نازل تکی',
+        type: nozzleTypes.Single,
         price: 'call us',
-        imageUrl: '/grid-icons/asset-1.svg',
-        specification: [
-          {
-            diameter: '20cm',
-          },
-        ],
+        imageUrl: '/products/nozzles/H11Single.png',
+        specification: ['M11', '11mm', '28mm'],
+        description: '',
+      },
+      {
+        name: 'H11 Chromed',
+        farsiName: 'نازل کروم دار',
+        price: 'call us',
+        type: nozzleTypes.Chromed,
+        imageUrl: '/products/nozzles/H11Chromed.png',
+        specification: ['M11', '11mm', '28mm'],
+        description: '',
+      },
+      {
+        name: 'D28 Single',
+        farsiName: 'نازل تکی D28',
+        price: 'call us',
+        type: nozzleTypes.Single,
+        imageUrl: '/products/nozzles/D28Single.png',
+        specification: ['M11', '15mm', '28mm'],
+        description: '',
+      },
+      {
+        name: 'D28 Double Chromed',
+        farsiName: 'D28 Double Chromed نازل',
+        price: 'call us',
+        type: nozzleTypes.Double,
+        imageUrl: '/products/nozzles/H11Single.png',
+        specification: ['M11', '11mm', '28mm'],
+        description: '',
+      },
+      {
+        name: 'D32 Single',
+        farsiName: 'D32 Single نازل',
+        price: 'call us',
+        type: nozzleTypes.Single,
+        imageUrl: '/products/nozzles/H11Single.png',
+        specification: ['M14', '15mm', '32mm'],
+        description: '',
+      },
+      {
+        name: 'D32 Double Chromed',
+        farsiName: 'D32 Double Chromed نازل',
+        price: 'call us',
+        type: nozzleTypes.Single,
+        imageUrl: '/products/nozzles/H11Single.png',
+        specification: ['M14', '15mm', '32mm'],
+        description: '',
+      },
+      {
+        name: 'Hongshan D28 Single',
+        farsiName: 'نازل تکی',
+        type: nozzleTypes.Single,
+        price: 'call us',
+        imageUrl: '/products/nozzles/HongshanD28Single.png',
+        specification: ['M11', '15mm', '28mm'],
+        description: '',
+      },
+      {
+        name: 'D28 Double',
+        farsiName: 'نازل دوتایی',
+        type: nozzleTypes.Double,
+        price: 'call us',
+        imageUrl: '/products/nozzles/D28Double.png',
+        specification: ['M11', '15mm', '15mm'],
+        description: '',
+      },
+      {
+        name: 'High Speed D28 Single',
+        farsiName: 'نازل تکی',
+        type: nozzleTypes.HighSpeed,
+        price: 'call us',
+        imageUrl: '/products/nozzles/HighSpeedD28Single.png',
+        specification: ['M11', '15mm', '28mm'],
+        description: '',
+      },
+      {
+        name: 'High Speed D32 Single',
+        farsiName: 'نازل تکی',
+        type: nozzleTypes.HighSpeed,
+        price: 'call us',
+        imageUrl: '/products/nozzles/HighSpeedD32Single.png',
+        specification: ['M11', '11mm', '28mm'],
+        description: '',
+      },
+      {
+        name: 'High Speed D32 Double Chromed',
+        farsiName: 'نازل دوتایی',
+        type: nozzleTypes.HighSpeed,
+        price: 'call us',
+        imageUrl: '/products/nozzles/HighSpeedD32DoubleChromed.png',
+        specification: ['M11', '15mm', '28mm'],
+        description: '',
+      },
+      {
+        name: 'Straw Hat H11 Single',
+        farsiName: '',
+        type: nozzleTypes.Single,
+        price: 'call us',
+        imageUrl: '/products/nozzles/StrawHatH11Single.png',
+        specification: ['M11', '11mm', '28mm'],
+        description: '',
+      },
+      {
+        name: 'Straw Hat H11 Double Chromed',
+        farsiName: '',
+        type: nozzleTypes.Single,
+        price: 'call us',
+        imageUrl: '/products/nozzles/StrawHatH11DoubleChromed.png',
+        specification: ['M11', '11mm', '28mm'],
+        description: '',
+      },
+      {
+        name: 'Straw Hat D28 Single',
+        farsiName: '',
+        type: nozzleTypes.Single,
+        price: 'call us',
+        imageUrl: '/products/nozzles/Straw HatD28Single.png',
+        specification: ['M11', '15mm', '28mm'],
+        description: '',
+      },
+
+      {
+        name: 'Straw Hat D32 Double Chromed',
+        farsiName: '',
+        type: nozzleTypes.Single,
+        price: 'call us',
+        imageUrl: '/products/nozzles/StrawHatD32DoubleChromed.png',
+        specification: ['M14', '15mm', '32mm'],
+        description: '',
+      },
+      {
+        name: 'seam Hat D28 Double Chromed',
+        farsiName: 'نازل دوتایی',
+        type: nozzleTypes.Double,
+        price: 'call us',
+        imageUrl: '/products/nozzles/seamHatD28DoubleChromed.png',
+        specification: ['M11', '15mm', '28mm'],
+        description: '',
+      },
+      {
+        name: 'Straw Hat D32 Single',
+        farsiName: 'نازل دوتایی',
+        type: nozzleTypes.Double,
+        price: 'call us',
+        imageUrl: '/products/nozzles/StrawHatD32Single.png',
+        specification: ['M14', '15mm', '32mm'],
         description: '',
       },
     ],
   },
-];
-
-const FEATURES = [
   {
-    imageUrl: '/grid-icons/asset-1.svg',
-    title: 'product No 1',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis error dolorem ipsa dolore facere est consequuntur aut, eos doloribus voluptate?',
-  },
-  {
-    imageUrl: '/grid-icons/asset-2.svg',
-    title: 'Lorem ipsum dolor sit amet.',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis error dolorem ipsa dolore facere est consequuntur aut, eos doloribus voluptate?',
-  },
-  {
-    imageUrl: '/grid-icons/asset-3.svg',
-    title: 'Lorem ipsum dolor sit amet.',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis error dolorem ipsa dolore facere est consequuntur aut, eos doloribus voluptate?',
-  },
-  {
-    imageUrl: '/grid-icons/asset-4.svg',
-    title: 'Lorem ipsum dolor sit amet.',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis error dolorem ipsa dolore facere est consequuntur aut, eos doloribus voluptate?',
-  },
-  {
-    imageUrl: '/grid-icons/asset-5.svg',
-    title: 'Lorem ipsum dolor sit amet.',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis error dolorem ipsa dolore facere est consequuntur aut, eos doloribus voluptate?',
-  },
-  {
-    imageUrl: '/grid-icons/asset-6.svg',
-    title: 'Lorem ipsum dolor sit amet.',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis error dolorem ipsa dolore facere est consequuntur aut, eos doloribus voluptate?',
-  },
-  {
-    imageUrl: '/grid-icons/asset-7.svg',
-    title: 'Lorem ipsum dolor sit amet.',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis error dolorem ipsa dolore facere est consequuntur aut, eos doloribus voluptate?',
-  },
-  {
-    imageUrl: '/grid-icons/asset-8.svg',
-    title: 'Lorem ipsum dolor sit amet.',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis error dolorem ipsa dolore facere est consequuntur aut, eos doloribus voluptate?',
-  },
-  {
-    imageUrl: '/grid-icons/asset-9.svg',
-    title: 'Lorem ipsum dolor sit amet.',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis error dolorem ipsa dolore facere est consequuntur aut, eos doloribus voluptate?',
+    type: categoryTypes.weldingNozzle,
+    title: categoryTypes.weldingNozzle,
+    farsiName: 'نازل جوش',
+    products: [
+      {
+        name: 'Qilin Short A',
+        farsiName: '',
+        price: 'call us',
+        imageUrl: '/products/weldingNozzle/QilinShortA.png',
+        specification: ['M10', '25mm', '10mm', '6mm'],
+        description: '',
+      },
+      {
+        name: 'Qilin Short B',
+        farsiName: '',
+        price: 'call us',
+        imageUrl: '/products/weldingNozzle/QilinShortA.png',
+        specification: ['M10', '25mm', '10mm', '6mm'],
+        description: '',
+      },
+      {
+        name: 'Qilin Short C',
+        farsiName: '',
+        price: 'call us',
+        imageUrl: '/products/weldingNozzle/QilinShortA.png',
+        specification: ['M10', '25mm', '10mm', '6mm'],
+        description: '',
+      },
+      {
+        name: 'Qilin Short D',
+        farsiName: '',
+        price: 'call us',
+        imageUrl: '/products/weldingNozzle/QilinShortA.png',
+        specification: ['M10', '25mm', '8.8mm', '6.5mm'],
+        description: '',
+      },
+      {
+        name: 'Qilin Short E',
+        farsiName: '',
+        price: 'call us',
+        imageUrl: '/products/weldingNozzle/QilinShortA.png',
+        specification: ['M10', '25mm', '3.5mm'],
+        description: '',
+      },
+    ],
   },
 ];
