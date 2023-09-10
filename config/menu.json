@@ -1,36 +1,36 @@
 {
   "main": [
     {
-      "name": "Home",
+      "name": "خانه",
       "url": "/"
     },
     {
-      "name": "Blog",
+      "name": "بلاگ",
       "url": "/blogs"
     },
     {
-      "name": "Pricing",
+      "name": "محصولات",
       "url": "/pricing"
     },
     {
-      "name": "Contact",
+      "name": "تماس با ما",
       "url": "/contact"
     },
     {
-      "name": "FAQ",
+      "name": "سوالات متداول",
       "url": "/faq"
     }
   ],
   "footer": [
     {
-      "name": "Company",
+      "name": "نارون",
       "menu": [
         {
-          "text": "Pricing",
+          "text": "محصولات",
           "url": "/pricing"
         },
         {
-          "text": "Quick Start",
+          "text": "تماس با ما",
           "url": "#"
         }
       ]
@@ -53,18 +53,18 @@
       ]
     },
     {
-      "name": "Support",
+      "name": "پشتیبانی",
       "menu": [
         {
-          "text": "FAQ",
+          "text": "سوالات متداول",
           "url": "/faq"
         },
         {
-          "text": "Privacy Policy",
+          "text": "شرایط و قوانین",
           "url": "#"
         },
         {
-          "text": "Terms & Conditions",
+          "text": "Terms",
           "url": "#"
         }
       ]

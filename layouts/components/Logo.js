@@ -20,7 +20,7 @@ const Logo = ({ src }) => {
         <Image
           width={logo_width.replace("px", "") * 2}
           height={logo_height.replace("px", "") * 2}
-          src={src ? src : logo}
+          src={src ? src : "/logos/Logo_english_transparent.png"}
           alt={title}
           priority
         />
