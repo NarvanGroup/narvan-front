@@ -16,7 +16,10 @@ package-lock.json
 
 # production
 /build
+<<<<<<< HEAD
 /.json
+=======
+>>>>>>> 3d0905ffe36cb4ab7ced459fdc8eaa0854c9dfc3
 
 # misc
 .DS_Store
@@ -26,7 +29,10 @@ package-lock.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+<<<<<<< HEAD
 .pnpm-debug.log*
+=======
+>>>>>>> 3d0905ffe36cb4ab7ced459fdc8eaa0854c9dfc3
 
 # local env files
 .env.local
@@ -36,6 +42,9 @@ yarn-error.log*
 
 # vercel
 .vercel
+<<<<<<< HEAD
 
 # Local Netlify folder
 .netlify
+=======
+>>>>>>> 3d0905ffe36cb4ab7ced459fdc8eaa0854c9dfc3
