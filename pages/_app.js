@@ -1,24 +1,33 @@
 import config from "@config/config.json";
 import theme from "@config/theme.json";
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { useEffect, useMemo, useState } from "react";
 import TagManager from "react-gtm-module";
+import { useLocale } from "shared/hooks/useLocale";
 import "styles/style.scss";
+import "styles/global.scss";
+
+import farsi from "../locales/fa/common.json";
+import english from "../locales/en/common.json";
+import { IntlProvider } from "next-intl";
 
 const App = ({ Component, pageProps }) => {
+  const { locale, messages } = useLocale();
+
   // default theme setup
 
   // import google font css
   const pf = theme.fonts.font_family.primary;
   const sf = theme.fonts.font_family.secondary;
   const [fontcss, setFontcss] = useState();
-  useEffect(() => {
-    fetch(
-      `https://fonts.googleapis.com/css2?family=${pf}${
-        sf ? "&family=" + sf : ""
-      }&display=swap`
-    ).then((res) => res.text().then((css) => setFontcss(css)));
-  }, [pf, sf]);
+  // useEffect(() => {
+  //   fetch(
+  //     `https://fonts.googleapis.com/css2?family=${pf}${
+  //       sf ? "&family=" + sf : ""
+  //     }&display=swap`
+  //   ).then((res) => res.text().then((css) => setFontcss(css)));
+  // }, [pf, sf]);
 
   // google tag manager (gtm)
   const tagManagerArgs = {
@@ -53,7 +62,9 @@ const App = ({ Component, pageProps }) => {
           content="width=device-width, initial-scale=1, maximum-scale=5"
         />
       </Head>
-      <Component {...pageProps} />
+      <IntlProvider locale={locale} messages={messages}>
+        <Component {...pageProps} />
+      </IntlProvider>
     </>
   );
 };

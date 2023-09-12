@@ -1,32 +1,32 @@
 {
   "main": [
     {
-      "name": "خانه",
+      "name": "home",
       "url": "/"
     },
     {
-      "name": "بلاگ",
+      "name": "blog",
       "url": "/blogs"
     },
     {
-      "name": "محصولات",
+      "name": "pricing",
       "url": "/pricing"
     },
     {
-      "name": "تماس با ما",
+      "name": "contact",
       "url": "/contact"
     },
     {
-      "name": "سوالات متداول",
+      "name": "FAQ",
       "url": "/faq"
     }
   ],
   "footer": [
     {
-      "name": "نارون",
+      "name": "Company",
       "menu": [
         {
-          "text": "محصولات",
+          "text": "Pricing",
           "url": "/pricing"
         },
         {

@@ -8,10 +8,12 @@ import { Autoplay, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.min.css";
 import { getListPage } from "../lib/contentParser";
+import { useTranslations } from "next-intl";
 
 const Home = ({ frontmatter }) => {
   const { banner, feature, services, workflow, call_to_action } = frontmatter;
   const { title } = config.site;
+  const t = useTranslations("Index");
 
   return (
     <Base title={title}>
@@ -20,8 +22,13 @@ const Home = ({ frontmatter }) => {
         <div className="container">
           <div className="row text-center">
             <div className="mx-auto lg:col-10">
-              <h1 className="font-primary font-bold">{banner.title}</h1>
-              <p className="mt-4">{markdownify(banner.content)}</p>
+              <h1 className="mb-8 font-primary font-bold">
+                {t(`${banner.title}`)}
+              </h1>
+              <h2 className="font-primary font-bold">
+                {t(`${banner.subTitle}`)}
+              </h2>
+              <p className="mt-4">{markdownify(t(`${banner.content}`))}</p>
               {banner.button.enable && (
                 <Link
                   className="btn btn-primary mt-4"
@@ -48,7 +55,7 @@ const Home = ({ frontmatter }) => {
       <section className="section bg-theme-light">
         <div className="container">
           <div className="text-center">
-            <h2>{markdownify(feature.title)}</h2>
+            <h2>{markdownify(t(feature.title))}</h2>
           </div>
           <div className="mt-8 grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
             {feature.features.map((item, i) => (
@@ -66,8 +73,8 @@ const Home = ({ frontmatter }) => {
                   />
                 )}
                 <div className="mt-4">
-                  {markdownify(item.name, "h3", "h5")}
-                  <p className="mt-3">{item.content}</p>
+                  {markdownify(t(item.name), "h3", "h5")}
+                  <p className="mt-3">{t(item.content)}</p>
                 </div>
               </div>
             ))}
@@ -113,8 +120,10 @@ const Home = ({ frontmatter }) => {
                     !isOdd && "md:order-1"
                   }`}
                 >
-                  <h2 className="font-bold leading-[40px]">{service?.title}</h2>
-                  <p className="mt-4 mb-2">{service?.content}</p>
+                  <h2 className="font-bold leading-[40px]">
+                    {t(service?.title)}
+                  </h2>
+                  <p className="mb-2 mt-4">{t(service?.content)}</p>
                   {service.button.enable && (
                     <Link
                       href={service?.button.link}

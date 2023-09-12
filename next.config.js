@@ -4,6 +4,12 @@
 
 const nextConfig = {
   reactStrictMode: true,
+
+  i18n: {
+    locales: ["en", "fa", "ch"],
+
+    defaultLocale: "fa",
+  },
 };
 
 module.exports = nextConfig;
