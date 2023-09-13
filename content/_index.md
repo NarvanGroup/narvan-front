@@ -8,6 +8,17 @@ banner:
     label: "Contact Us"
     link: "/contact"
 
+    # products
+products:
+  title: products
+  categories:
+    - name: Industrial Laser
+      image: "/images/lasercat.jpg"
+      content: Global Reach Text
+    - name: Hardware
+      image: "/images/hardwarecat.avif"
+      content: Expert Team Text
+
 # feature
 feature:
   title: Something You Need To Know
@@ -34,14 +45,12 @@ feature:
 # services
 services:
   - title: Why Narvan
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat. consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat."
+    content: Why Narvan Text
     images:
-      - "/images/service-slide-1.png"
-      - "/images/service-slide-2.png"
-      - "/images/service-slide-3.png"
+      - "/images/whynarvan.avif"
     button:
       enable: true
-      label: Check it out
+      label: contact
       link: /contact
 
   - title: "It is a privately owned Information and cyber security company"
@@ -83,8 +92,8 @@ workflow:
 
 # call_to_action
 call_to_action:
-  title: Ready to get started?
-  content: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur.
+  title: Get Started Today
+  content: call to action text
   image: "/images/cta.svg"
   button:
     enable: true

@@ -54,6 +54,34 @@
   @apply transition-all duration-200 ease-in-out hover:shadow;
 }
 
+
+//category card
+.category-card {
+  // @apply transition-all duration-200 ease-in-out hover:shadow;
+  border-radius: 10px;
+  height: 280px;
+  box-shadow: 2px 2px 20px rgba(0,0,0,.1);
+  background-size: cover!important;
+  background-position: center;
+  position: relative;
+  cursor: pointer;
+  &:hover {
+    color: #292929;
+  }
+}
+
+.category-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  z-index: 2;
+  h3 {
+    color: #fff;
+  }
+}
+
 //swiper pagination
 .service-carousel .swiper-pagination {
   @apply flex justify-center;

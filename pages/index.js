@@ -11,7 +11,8 @@ import { getListPage } from "../lib/contentParser";
 import { useTranslations } from "next-intl";
 
 const Home = ({ frontmatter }) => {
-  const { banner, feature, services, workflow, call_to_action } = frontmatter;
+  const { banner, feature, services, workflow, call_to_action, products } =
+    frontmatter;
   const { title } = config.site;
   const t = useTranslations("Index");
 
@@ -47,6 +48,40 @@ const Home = ({ frontmatter }) => {
                 priority
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Products */}
+      <section className="section">
+        <div className="container">
+          <div className="text-center">
+            <h2>{markdownify(t(products.title))}</h2>
+          </div>
+          <div className="mt-8 grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-2">
+            {products.categories.map((item, i) => (
+              <div
+                className="category-card rounded-xl bg-white p-5 pb-8 text-center"
+                key={`feature-${i}`}
+                style={{
+                  backgroundImage: `url(${item?.image})`,
+                }}
+              >
+                {/* {item.icon && (
+                  <Image
+                    className="mx-auto"
+                    src={item.icon}
+                    width={30}
+                    height={30}
+                    alt=""
+                  />
+                )} */}
+                <div className="category-title mt-4 p-16">
+                  {markdownify(t(item.name), "h3", "h5")}
+                  {/* <p className="mt-3">{t(item.content)}</p> */}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -108,7 +143,13 @@ const Home = ({ frontmatter }) => {
                     {/* Slides */}
                     {service?.images.map((slide, index) => (
                       <SwiperSlide key={index}>
-                        <Image src={slide} alt="" width={600} height={500} />
+                        <Image
+                          style={{ borderRadius: "10px" }}
+                          src={slide}
+                          alt=""
+                          width={600}
+                          height={500}
+                        />
                       </SwiperSlide>
                     ))}
                   </Swiper>
@@ -129,7 +170,7 @@ const Home = ({ frontmatter }) => {
                       href={service?.button.link}
                       className="cta-link inline-flex items-center text-primary"
                     >
-                      {service?.button.label}
+                      {t(service?.button.label)}
                       <Image
                         className="ml-1"
                         src="/images/arrow-right.svg"
