@@ -24,24 +24,24 @@ const Home = ({ frontmatter }) => {
           <div className="row text-center">
             <div className="mx-auto lg:col-10">
               <h1 className="mb-8 font-primary font-bold">
-                {t(`${banner.title}`)}
+                {t(`${banner?.title}`)}
               </h1>
               <h2 className="font-primary font-bold">
-                {t(`${banner.subTitle}`)}
+                {t(`${banner?.subTitle}`)}
               </h2>
-              <p className="mt-4">{markdownify(t(`${banner.content}`))}</p>
-              {banner.button.enable && (
+              <p className="mt-4">{markdownify(t(`${banner?.content}`))}</p>
+              {banner?.button.enable && (
                 <Link
                   className="btn btn-primary mt-4"
-                  href={banner.button.link}
-                  rel={banner.button.rel}
+                  href={banner?.button.link}
+                  rel={banner?.button.rel}
                 >
-                  {banner.button.label}
+                  {banner?.button.label}
                 </Link>
               )}
               <Image
                 className="mx-auto mt-12"
-                src={banner.image}
+                src={banner?.image}
                 width={750}
                 height={390}
                 alt="banner image"
@@ -56,10 +56,10 @@ const Home = ({ frontmatter }) => {
       <section className="section">
         <div className="container">
           <div className="text-center">
-            <h2>{markdownify(t(products.title))}</h2>
+            <h2>{markdownify(t(products?.title))}</h2>
           </div>
           <div className="mt-8 grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-2">
-            {products.categories.map((item, i) => (
+            {products?.categories.map((item, i) => (
               <div
                 className="category-card rounded-xl bg-white p-5 pb-8 text-center"
                 key={`feature-${i}`}
@@ -171,13 +171,13 @@ const Home = ({ frontmatter }) => {
                       className="cta-link inline-flex items-center text-primary"
                     >
                       {t(service?.button.label)}
-                      <Image
+                      {/* <Image
                         className="ml-1"
                         src="/images/arrow-right.svg"
                         width={18}
                         height={14}
                         alt="arrow"
-                      />
+                      /> */}
                     </Link>
                   )}
                 </div>
@@ -188,20 +188,21 @@ const Home = ({ frontmatter }) => {
       })}
 
       {/* workflow */}
-      <section className="section pb-0">
+      <section className="section direction-column flex items-center justify-center pb-0">
         <div className="mb-8 text-center">
           {markdownify(
-            workflow.title,
+            t(workflow.title),
             "h2",
             "mx-auto max-w-[400px] font-bold leading-[44px]"
           )}
           {markdownify(workflow.description, "p", "mt-3")}
         </div>
         <Image
+          style={{ borderRadius: "10px" }}
           src={workflow.image}
           alt="workflow image"
-          width={1920}
-          height={296}
+          width={900}
+          height={400}
         />
       </section>
 

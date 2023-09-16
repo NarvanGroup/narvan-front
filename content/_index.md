@@ -3,7 +3,7 @@ banner:
   title: Narvan
   subTitle: Your Trusted Partner in Global Trade
   content: banner content
-  image: /images/banner1.avif
+  image: /images/banner1.jpg
   button:
     label: "Contact Us"
     link: "/contact"
@@ -47,31 +47,38 @@ services:
   - title: Why Narvan
     content: Why Narvan Text
     images:
-      - "/images/whynarvan.avif"
+      - "/images/whynarvan.jpg"
     button:
       enable: true
       label: contact
       link: /contact
 
-  - title: "It is a privately owned Information and cyber security company"
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat. consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat."
+  - title: Import to Iran
+    content: Import to Iran Text
     images:
-      - "/images/service-slide-1.png"
+      - "/images/import1.jpg"
     button:
       enable: true
-      label: Check it out
+      label: contact
       link: /contact
 
-  # - title: "It’s a team of experienced and skilled people with distributions"
-  #   content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat. consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat."
-  #   images:
-  #     - "/images/service-slide-1.png"
-  #     - "/images/service-slide-2.png"
-  #     - "/images/service-slide-3.png"
-  #   button:
-  #     enable: true
-  #     label: Check it out
-  #     link: /contact
+  - title: Clearance
+    content: Clearance Text
+    images:
+      - "/images/clearance.jpg"
+    button:
+      enable: true
+      label: contact
+      link: /contact
+
+  - title: Recive
+    content: Recieve Text
+    images:
+      - "/images/recieve.jpg"
+    button:
+      enable: false
+      label: Check it out
+      link: /contact
 
   # - title: "A company standing different from others"
   #   content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat. consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat."
@@ -87,16 +94,16 @@ services:
 # workflow
 workflow:
   title: "Experience the best workflow with us"
-  image: "/images/banner.svg"
+  image: "/images/workflow2.jpg"
   description: ""
 
 # call_to_action
 call_to_action:
   title: Get Started Today
   content: call to action text
-  image: "/images/cta.svg"
+  image: "/images/callAction.jpg"
   button:
     enable: true
-    label: "Contact Us"
+    label: "contact"
     link: "/contact"
 ---
