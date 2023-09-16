@@ -9,7 +9,7 @@
       "url": "/blogs"
     },
     {
-      "name": "pricing",
+      "name": "products",
       "url": "/pricing"
     },
     {
@@ -23,35 +23,19 @@
   ],
   "footer": [
     {
-      "name": "Company",
+      "name": "Narvan",
       "menu": [
         {
-          "text": "Pricing",
+          "text": "Products",
           "url": "/pricing"
         },
         {
-          "text": "Quick Start",
-          "url": "#"
+          "text": "Contact",
+          "url": "/contact"
         }
       ]
     },
-    {
-      "name": "Product",
-      "menu": [
-        {
-          "text": "Features",
-          "url": "#"
-        },
-        {
-          "text": "Platform",
-          "url": "#"
-        },
-        {
-          "text": "Pricing",
-          "url": "/pricing"
-        }
-      ]
-    },
+
     {
       "name": "Support",
       "menu": [
@@ -60,11 +44,11 @@
           "url": "/faq"
         },
         {
-          "text": "Privacy Policy",
+          "text": "شرایط استفاده",
           "url": "#"
         },
         {
-          "text": "Terms & Conditions",
+          "text": "قوانین و مقررات",
           "url": "#"
         }
       ]

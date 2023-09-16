@@ -7,11 +7,8 @@ import TagManager from "react-gtm-module";
 import { useLocale } from "shared/hooks/useLocale";
 import "styles/style.scss";
 import "styles/global.scss";
-
-import farsi from "../locales/fa/common.json";
-import english from "../locales/en/common.json";
 import { IntlProvider } from "next-intl";
-
+import { NextIntlClientProvider } from "next-intl";
 const App = ({ Component, pageProps }) => {
   const { locale, messages } = useLocale();
 
@@ -42,6 +39,12 @@ const App = ({ Component, pageProps }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const dir = locale === "fa" ? "rtl" : "ltr";
+
+  useEffect(() => {
+    document.documentElement.dir = dir;
+  }, [dir]);
+
   return (
     <>
       <Head>
@@ -62,9 +65,11 @@ const App = ({ Component, pageProps }) => {
           content="width=device-width, initial-scale=1, maximum-scale=5"
         />
       </Head>
-      <IntlProvider locale={locale} messages={messages}>
+      {/* <IntlProvider locale={locale} messages={messages}> */}
+      <NextIntlClientProvider messages={messages}>
         <Component {...pageProps} />
-      </IntlProvider>
+      </NextIntlClientProvider>
+      {/* </IntlProvider> */}
     </>
   );
 };

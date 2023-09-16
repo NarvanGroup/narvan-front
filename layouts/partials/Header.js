@@ -8,7 +8,7 @@ import LanguageSwitcher from "components/LanguageSwitcher";
 import { useTranslations } from "next-intl";
 
 const Header = () => {
-  const t = useTranslations("Index");
+  const t = useTranslations();
   //router
   const router = useRouter();
 

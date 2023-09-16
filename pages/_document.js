@@ -1,11 +1,14 @@
 import config from "@config/config.json";
 import { Head, Html, Main, NextScript } from "next/document";
+import { useState } from "react";
 
-const Document = () => {
+const Document = (props) => {
   // destructuring items from config object
   const { favicon } = config.site;
+
+  console.log({ props });
   return (
-    <Html lang="en" dir="rtl">
+    <Html dir={props.locale === "fa" ? "rtl" : "ltr"} lang={props.locale}>
       <Head>
         {/* favicon */}
         <link
@@ -38,3 +41,10 @@ const Document = () => {
 };
 
 export default Document;
+
+const getInitialProps = async (ctx) => {
+  const initialProps = await Document.getInitialProps(ctx);
+  // locale is in ctx.locale
+
+  return { ...initialProps, locale: ctx?.locale || "fa" };
+};

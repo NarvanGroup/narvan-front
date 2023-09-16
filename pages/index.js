@@ -14,7 +14,7 @@ const Home = ({ frontmatter }) => {
   const { banner, feature, services, workflow, call_to_action, products } =
     frontmatter;
   const { title } = config.site;
-  const t = useTranslations("Index");
+  const t = useTranslations();
 
   return (
     <Base title={title}>

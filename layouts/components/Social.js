@@ -67,7 +67,7 @@ const Social = ({ source, className }) => {
   return (
     <ul className={className}>
       {facebook && (
-        <li className="inline-block">
+        <li className="ml-4 inline-block">
           <a
             aria-label="facebook"
             href={facebook}

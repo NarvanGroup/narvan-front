@@ -3,12 +3,16 @@ import config from "@config/config.json";
 import menu from "@config/menu.json";
 import social from "@config/social.json";
 import { markdownify } from "@lib/utils/textConverter";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 
 const Footer = () => {
   const { copyright, footer_content } = config.params;
   const { footer } = menu;
+
+  const t = useTranslations();
+
   return (
     <footer className="section bg-theme-light pb-0">
       <div className="container">
@@ -17,12 +21,12 @@ const Footer = () => {
           {footer.map((col) => {
             return (
               <div className="mb-12 sm:col-6 lg:col-3" key={col.name}>
-                {markdownify(col.name, "h2", "h4")}
+                {markdownify(t(col.name), "h2", "h4")}
                 <ul className="mt-6">
                   {col?.menu.map((item) => (
                     <li className="mb-1" key={item.text}>
                       <Link href={item.url} rel="">
-                        {item.text}
+                        {t(item.text)}
                       </Link>
                     </li>
                   ))}
@@ -31,7 +35,7 @@ const Footer = () => {
             );
           })}
           {/* social icons */}
-          <div className="md-12 sm:col-6 lg:col-3">
+          <div className="md-12 sm:col-6 lg:col-6">
             <Link href="/" aria-label="Bigspring">
               <Image
                 src={config.site.logo}
@@ -40,7 +44,7 @@ const Footer = () => {
                 alt=""
               />
             </Link>
-            {markdownify(footer_content, "p", "mt-3 mb-6")}
+            {markdownify(t("footer content"), "p", "mt-3 mb-6")}
             <Social source={social} className="social-icons mb-8" />
           </div>
         </div>

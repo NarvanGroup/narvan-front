@@ -38,6 +38,6 @@ export const useLocale = () => {
   return {
     locale: router.locale,
     switchLocale,
-    messages: messages[router.locale],
+    messages: flattenedMessages,
   };
 };

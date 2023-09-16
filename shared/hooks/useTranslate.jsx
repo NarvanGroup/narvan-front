@@ -1,11 +1,9 @@
-// import { useIntl } from "next-intl";
+import { useIntl } from "react-intl";
 
-// export const useTranslate = () => {
-//   const { formatMessage } = useIntl();
-//   // Define a function called t that takes in a key of type TranslationKey
-//   (key) =>
-//     // Call formatMessage with an object that has an id property set to the given key
-//     [formatMessage];
+export const useTranslate = () => {
+  const { formatMessage } = useIntl();
+  // Define a function called t that takes in a key of type TranslationKey
+  (key) => [formatMessage];
 
-//   return { t };
-// };
+  return { t };
+};
