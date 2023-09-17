@@ -22,6 +22,7 @@ const Header = () => {
   const { logo } = config.site;
   const { enable, label, link } = config.nav_button;
 
+  const handleClickMenu = () => {};
   return (
     <header className="header">
       <nav className="navbar container">
@@ -87,7 +88,11 @@ const Header = () => {
                 ) : (
                   <li className="nav-item">
                     <Link
-                      href={menu.url}
+                      // href={menu.url}
+                      href={{
+                        pathname: menu.url,
+                        // query: { locale: router?.locale },
+                      }}
                       onClick={() => setNavOpen(false)}
                       className={`nav-link block ${
                         router.asPath === menu.url ? "nav-link-active" : ""

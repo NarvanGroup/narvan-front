@@ -1,15 +1,17 @@
 import config from "@config/config.json";
 import { markdownify } from "@lib/utils/textConverter";
+import { useTranslations } from "next-intl";
 
 const Contact = ({ data }) => {
   const { frontmatter } = data;
   const { title, info } = frontmatter;
   const { contact_form_action } = config.params;
+  const t = useTranslations();
 
   return (
     <section className="section">
       <div className="container">
-        {markdownify(title, "h1", "text-center font-normal")}
+        {markdownify(t(title), "h1", "text-center font-normal")}
         <div className="section row pb-0">
           <div className="col-12 md:col-6 lg:col-7">
             <form
@@ -52,17 +54,17 @@ const Contact = ({ data }) => {
                 />
               </div>
               <button type="submit" className="btn btn-primary">
-                Send Now
+                {t("Send Now")}
               </button>
             </form>
           </div>
           <div className="content col-12 md:col-6 lg:col-5">
-            {markdownify(info.title, "h4")}
-            {markdownify(info.description, "p", "mt-4")}
+            {markdownify(t(info.title), "h4")}
+            {markdownify(t(info.description), "p", "mt-4")}
             <ul className="contact-list mt-5">
               {info.contacts.map((contact, index) => (
                 <li key={index}>
-                  {markdownify(contact, "strong", "text-dark")}
+                  {markdownify(t(contact), "strong", "text-dark")}
                 </li>
               ))}
             </ul>

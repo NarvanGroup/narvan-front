@@ -58,6 +58,7 @@
 //category card
 .category-card {
   // @apply transition-all duration-200 ease-in-out hover:shadow;
+  @apply transition-all duration-200 ease-in-out hover:shadow;
   border-radius: 10px;
   height: 280px;
   box-shadow: 2px 2px 20px rgba(0,0,0,.1);

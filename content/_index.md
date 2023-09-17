@@ -12,7 +12,7 @@ banner:
 products:
   title: products
   categories:
-    - name: Industrial Laser
+    - name: Industrial equipment
       image: "/images/lasercat.jpg"
       content: Global Reach Text
     - name: Hardware
@@ -31,13 +31,13 @@ feature:
       content: Expert Team Text
     - name: "24h Service"
       icon: "/images/user-clock.svg"
-      content: "Lorem ipsum dolor sit amet consectetur adipisicing elit quam nihil"
+      content: 24h Service Text
     - name: "Tailored Solutions"
       icon: "/images/love.svg"
       content: Tailored Solutions Text
     - name: "Fast In Time"
       icon: "/images/speedometer.svg"
-      content: "Lorem ipsum dolor sit amet consectetur adipisicing elit quam nihil"
+      content: Fast In Time Text
     - name: "Quality Assurance"
       icon: "/images/cloud.svg"
       content: Quality Assurance Text

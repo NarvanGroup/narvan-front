@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 function Cta({ cta }) {
-  const t = useTranslations("Index");
+  const t = useTranslations();
 
   return (
     <section className="section px-4">

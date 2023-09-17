@@ -9,12 +9,47 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.min.css";
 import { getListPage } from "../lib/contentParser";
 import { useTranslations } from "next-intl";
+import {
+  Global,
+  People,
+  Headphone,
+  MessageQuestion,
+  TruckTime,
+  Diamonds,
+} from "iconsax-react";
+import { useRouter } from "next/router";
 
 const Home = ({ frontmatter }) => {
+  const router = useRouter();
+  console.log({ router });
   const { banner, feature, services, workflow, call_to_action, products } =
     frontmatter;
   const { title } = config.site;
   const t = useTranslations();
+
+  const getFeatureIcon = (name) => {
+    switch (name) {
+      case "Global Reach":
+        return <Global size="32" color="#6aa84f" />;
+
+      case "Expert Team":
+        return <People size="32" color="#6aa84f" />;
+
+      case "24h Service":
+        return <Headphone size="32" color="#6aa84f" />;
+
+      case "Tailored Solutions":
+        return <MessageQuestion size="32" color="#6aa84f" />;
+
+      case "Fast In Time":
+        return <TruckTime size="32" color="#6aa84f" />;
+
+      case "Quality Assurance":
+        return <Diamonds size="32" color="#6aa84f" />;
+      default:
+        break;
+    }
+  };
 
   return (
     <Base title={title}>
@@ -62,7 +97,7 @@ const Home = ({ frontmatter }) => {
             {products?.categories.map((item, i) => (
               <div
                 className="category-card rounded-xl bg-white p-5 pb-8 text-center"
-                key={`feature-${i}`}
+                key={`product-${i}`}
                 style={{
                   backgroundImage: `url(${item?.image})`,
                 }}
@@ -95,18 +130,19 @@ const Home = ({ frontmatter }) => {
           <div className="mt-8 grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
             {feature.features.map((item, i) => (
               <div
-                className="feature-card rounded-xl bg-white p-5 pb-8 text-center"
+                className="feature-card direction-column flex items-center justify-center rounded-xl bg-white p-5 pb-8 text-center"
                 key={`feature-${i}`}
               >
-                {item.icon && (
-                  <Image
-                    className="mx-auto"
-                    src={item.icon}
-                    width={30}
-                    height={30}
-                    alt=""
-                  />
-                )}
+                {
+                  item.icon && getFeatureIcon(item?.name)
+                  // <Image
+                  //   className="mx-auto"
+                  //   src={item.icon}
+                  //   width={30}
+                  //   height={30}
+                  //   alt=""
+                  // />
+                }
                 <div className="mt-4">
                   {markdownify(t(item.name), "h3", "h5")}
                   <p className="mt-3">{t(item.content)}</p>
@@ -205,6 +241,9 @@ const Home = ({ frontmatter }) => {
           height={400}
         />
       </section>
+      {/* <section className="section">
+        <Blog />
+      </section> */}
 
       {/* Cta */}
       <Cta cta={call_to_action} />

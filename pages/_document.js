@@ -46,5 +46,5 @@ const getInitialProps = async (ctx) => {
   const initialProps = await Document.getInitialProps(ctx);
   // locale is in ctx.locale
 
-  return { ...initialProps, locale: ctx?.locale || "fa" };
+  return { ...initialProps, locale: ctx?.query?.locale || "fa" };
 };

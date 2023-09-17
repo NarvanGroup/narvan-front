@@ -9,6 +9,8 @@ const { blog_folder } = config.settings;
 
 // blog pagination
 const BlogPagination = ({ postIndex, posts, currentPage, pagination }) => {
+  console.log({ posts });
+
   const indexOfLastPost = currentPage * pagination;
   const indexOfFirstPost = indexOfLastPost - pagination;
   const totalPages = Math.ceil(posts.length / pagination);
