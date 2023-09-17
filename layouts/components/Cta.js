@@ -1,10 +1,10 @@
 import { markdownify } from "@lib/utils/textConverter";
-import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslation } from "next-i18next";
 
 function Cta({ cta }) {
-  const t = useTranslations();
+  const { t } = useTranslation();
 
   return (
     <section className="section px-4">

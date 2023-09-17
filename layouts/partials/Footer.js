@@ -3,7 +3,7 @@ import config from "@config/config.json";
 import menu from "@config/menu.json";
 import social from "@config/social.json";
 import { markdownify } from "@lib/utils/textConverter";
-import { useTranslations } from "next-intl";
+import { useTranslation } from "next-i18next";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -11,7 +11,7 @@ const Footer = () => {
   const { copyright, footer_content } = config.params;
   const { footer } = menu;
 
-  const t = useTranslations();
+  const { t } = useTranslation();
 
   return (
     <footer className="section bg-theme-light pb-0">

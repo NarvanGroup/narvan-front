@@ -8,7 +8,6 @@ import { Autoplay, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.min.css";
 import { getListPage } from "../lib/contentParser";
-import { useTranslations } from "next-intl";
 import {
   Global,
   People,
@@ -18,14 +17,16 @@ import {
   Diamonds,
 } from "iconsax-react";
 import { useRouter } from "next/router";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const Home = ({ frontmatter }) => {
   const router = useRouter();
-  console.log({ router });
+
   const { banner, feature, services, workflow, call_to_action, products } =
     frontmatter;
   const { title } = config.site;
-  const t = useTranslations();
+  const { t } = useTranslation();
 
   const getFeatureIcon = (name) => {
     switch (name) {
@@ -251,11 +252,12 @@ const Home = ({ frontmatter }) => {
   );
 };
 
-export const getStaticProps = async () => {
+export const getStaticProps = async ({ locale }) => {
   const homePage = await getListPage("content/_index.md");
   const { frontmatter } = homePage;
   return {
     props: {
+      ...(await serverSideTranslations(locale, ["common"])),
       frontmatter,
     },
   };

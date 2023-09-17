@@ -1,12 +1,12 @@
 import config from "@config/config.json";
 import { markdownify } from "@lib/utils/textConverter";
-import { useTranslations } from "next-intl";
+import { useTranslation } from "next-i18next";
 
 const Contact = ({ data }) => {
   const { frontmatter } = data;
   const { title, info } = frontmatter;
   const { contact_form_action } = config.params;
-  const t = useTranslations();
+  const { t } = useTranslation();
 
   return (
     <section className="section">

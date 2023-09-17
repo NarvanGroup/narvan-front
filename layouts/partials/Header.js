@@ -5,10 +5,10 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import LanguageSwitcher from "components/LanguageSwitcher";
-import { useTranslations } from "next-intl";
+import { useTranslation } from "next-i18next";
 
 const Header = () => {
-  const t = useTranslations();
+  const { t } = useTranslation();
   //router
   const router = useRouter();
 

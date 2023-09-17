@@ -4,13 +4,11 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useMemo, useState } from "react";
 import TagManager from "react-gtm-module";
-import { useLocale } from "shared/hooks/useLocale";
 import "styles/style.scss";
 import "styles/global.scss";
-import { IntlProvider } from "next-intl";
-import { NextIntlClientProvider } from "next-intl";
+import { appWithTranslation } from "next-i18next";
 const App = ({ Component, pageProps }) => {
-  const { locale, messages } = useLocale();
+  const router = useRouter();
 
   // default theme setup
 
@@ -39,8 +37,8 @@ const App = ({ Component, pageProps }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const dir = locale === "fa" ? "rtl" : "ltr";
-
+  const dir = router.locale === "fa" ? "rtl" : "ltr";
+  console.log({ router });
   useEffect(() => {
     document.documentElement.dir = dir;
   }, [dir]);
@@ -65,13 +63,10 @@ const App = ({ Component, pageProps }) => {
           content="width=device-width, initial-scale=1, maximum-scale=5"
         />
       </Head>
-      {/* <IntlProvider locale={locale} messages={messages}> */}
-      <NextIntlClientProvider messages={messages}>
-        <Component {...pageProps} />
-      </NextIntlClientProvider>
-      {/* </IntlProvider> */}
+
+      <Component {...pageProps} />
     </>
   );
 };
 
-export default App;
+export default appWithTranslation(App);
