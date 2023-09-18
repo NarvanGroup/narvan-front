@@ -3,23 +3,24 @@
 import Base from "@layouts/Baseof";
 import Pagination from "@layouts/components/Pagination";
 import { markdownify } from "@lib/utils/textConverter";
+import { getProductsService } from "api/services/products";
 import { useEffect, useState } from "react";
 
 export const Products = () => {
   const [products, setProducts] = useState([]);
 
-  //   const getProducts = async () => {
-  //     try {
-  //       const result = await getProductsService();
-  //       if (result.success) {
-  //         setProducts(result.data);
-  //       }
-  //     } catch (error) {}
-  //   };
+  const getProducts = async () => {
+    try {
+      const result = await getProductsService();
+      if (result.success) {
+        setProducts(result.data);
+      }
+    } catch (error) {}
+  };
 
-  //   useEffect(() => {
-  //     getProducts();
-  //   }, []);
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   return (
     <Base title={"محصولات"}>

@@ -1,6 +1,10 @@
-import { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
-import { errorHandler } from '../errorHandler';
-import { store } from '../../store';
+import {
+  AxiosError,
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosResponse,
+} from "axios";
+import { errorHandler } from "../errorHandler";
 
 const onRequest = (config: AxiosRequestConfig): any => {
   return config;
@@ -13,7 +17,7 @@ const onRequestError = (error: AxiosError): Promise<AxiosError> => {
 const onResponse = (response: AxiosResponse): AxiosResponse => response;
 
 const onResponseError = async (error: any): Promise<AxiosError> => {
-  errorHandler(error?.response, store.dispatch);
+  errorHandler(error?.response);
   return Promise.reject(error);
 };
 
