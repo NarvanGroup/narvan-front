@@ -2,9 +2,12 @@ import config from "@config/config.json";
 import { plainify } from "@lib/utils/textConverter";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslation } from "next-i18next";
 
 const Posts = ({ posts }) => {
   const { blog_folder, summary_length } = config.settings;
+  const { t } = useTranslation();
+
   return (
     <div className="section row pb-0">
       <div className="col-12 pb-12 lg:pb-24">
@@ -71,7 +74,7 @@ const Posts = ({ posts }) => {
             href={`/${blog_folder}/${post.slug}`}
             rel=""
           >
-            Read More
+            {t("Read More")}
           </Link>
         </div>
       ))}

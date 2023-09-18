@@ -88,11 +88,8 @@ const Header = () => {
                 ) : (
                   <li className="nav-item">
                     <Link
-                      // href={menu.url}
-                      href={{
-                        pathname: menu.url,
-                        // query: { locale: router?.locale },
-                      }}
+                      href={menu.url}
+                      locale={router?.locale}
                       onClick={() => setNavOpen(false)}
                       className={`nav-link block ${
                         router.asPath === menu.url ? "nav-link-active" : ""

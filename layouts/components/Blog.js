@@ -1,16 +1,22 @@
-import Pagination from "@components/Pagination";
 import config from "@config/config.json";
 import Base from "@layouts/Baseof";
-import { getListPage, getSinglePage } from "@lib/contentParser";
 import { parseMDX } from "@lib/utils/mdxParser";
 import { markdownify } from "@lib/utils/textConverter";
 import Posts from "@partials/Posts";
+import { useTranslation } from "next-i18next";
+import Image from "next/image";
+import Link from "next/link";
+import { Autoplay, Pagination } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper.min.css";
+
 const { blog_folder } = config.settings;
 console.log({ blog_folder });
 
 // blog pagination
 const Blog = ({ postIndex, posts, currentPage, pagination }) => {
   console.log({ posts });
+  const { t } = useTranslation();
 
   const indexOfLastPost = currentPage * pagination;
   const indexOfFirstPost = indexOfLastPost - pagination;
@@ -20,64 +26,68 @@ const Blog = ({ postIndex, posts, currentPage, pagination }) => {
   const { title } = frontmatter;
 
   return (
-    <Base title={title}>
-      <section className="section">
-        <div className="container">
-          {markdownify(title, "h1", "h1 text-center font-normal text-[56px]")}
-          <Posts posts={currentPosts} />
-          <Pagination
-            section={blog_folder}
-            totalPages={totalPages}
-            currentPage={currentPage}
-          />
+    <section className="section">
+      <div className="container">
+        {markdownify(t(title), "h1", "h1 text-center font-normal text-[56px]")}
+        <div className={`service-carousel md:order-2`}>
+          <Swiper
+            modules={[Autoplay, Pagination]}
+            pagination
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
+            init={true}
+            breakpoints={{
+              300: {
+                slidesPerView: 1,
+              },
+              576: {
+                slidesPerView: 2,
+              },
+              768: {
+                slidesPerView: 3,
+              },
+            }}
+          >
+            <div className="section row pb-0">
+              {posts.slice(1).map((post, i) => (
+                <SwiperSlide key={i}>
+                  <div key={`key-${i}`} className="m-4">
+                    {post.frontmatter.image && (
+                      <Image
+                        className="rounded-lg"
+                        src={post.frontmatter.image}
+                        alt={post.frontmatter.title}
+                        width={i === 0 ? "925" : "445"}
+                        height={i === 0 ? "475" : "230"}
+                      />
+                    )}
+                    <h2 className="h3 mb-2 mt-4">
+                      <Link
+                        href={`/${blog_folder}/${post.slug}`}
+                        className="block hover:text-primary"
+                      >
+                        {post.frontmatter.title}
+                      </Link>
+                    </h2>
+                    <p className="text-text">{post.frontmatter.desc}</p>
+                    <Link
+                      className="btn btn-primary mt-4"
+                      href={`/${blog_folder}/${post.slug}`}
+                      rel=""
+                    >
+                      {t("Read More")}
+                    </Link>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </div>
+          </Swiper>
         </div>
-      </section>
-    </Base>
+      </div>
+    </section>
   );
 };
 
 export default Blog;
-
-// get blog pagination slug
-export const getStaticPaths = () => {
-  const getAllSlug = getSinglePage(`content/${blog_folder}`);
-  const allSlug = getAllSlug.map((item) => item.slug);
-  const { pagination } = config.settings;
-  const totalPages = Math.ceil(allSlug.length / pagination);
-  let paths = [];
-
-  for (let i = 1; i < totalPages; i++) {
-    paths.push({
-      params: {
-        slug: (i + 1).toString(),
-      },
-    });
-  }
-
-  return {
-    paths,
-    fallback: false,
-  };
-};
-
-// get blog pagination content
-export const getStaticProps = async ({ params }) => {
-  const currentPage = parseInt((params && params.slug) || 1);
-  const { pagination } = config.settings;
-  const posts = getSinglePage(`content/${blog_folder}`).sort(
-    (post1, post2) =>
-      new Date(post2.frontmatter.date) - new Date(post1.frontmatter.date)
-  );
-  const postIndex = await getListPage(`content/${blog_folder}/_index.md`);
-  const mdxContent = await parseMDX(postIndex.content);
-
-  return {
-    props: {
-      pagination: pagination,
-      posts: posts,
-      currentPage: currentPage,
-      postIndex: postIndex,
-      mdxContent: mdxContent,
-    },
-  };
-};

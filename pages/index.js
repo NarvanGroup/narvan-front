@@ -7,7 +7,7 @@ import Link from "next/link";
 import { Autoplay, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.min.css";
-import { getListPage } from "../lib/contentParser";
+import { getListPage, getSinglePage } from "../lib/contentParser";
 import {
   Global,
   People,
@@ -19,13 +19,16 @@ import {
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { parseMDX } from "@lib/utils/mdxParser";
+import Blog from "@layouts/components/Blog";
 
-const Home = ({ frontmatter }) => {
+const { title, blog_folder } = config.site;
+
+const Home = ({ frontmatter, postIndex, posts, currentPage, pagination }) => {
   const router = useRouter();
 
   const { banner, feature, services, workflow, call_to_action, products } =
     frontmatter;
-  const { title } = config.site;
   const { t } = useTranslation();
 
   const getFeatureIcon = (name) => {
@@ -242,9 +245,13 @@ const Home = ({ frontmatter }) => {
           height={400}
         />
       </section>
-      {/* <section className="section">
-        <Blog />
-      </section> */}
+
+      <Blog
+        postIndex={postIndex}
+        posts={posts}
+        currentPage={currentPage}
+        pagination={pagination}
+      />
 
       {/* Cta */}
       <Cta cta={call_to_action} />
@@ -252,13 +259,28 @@ const Home = ({ frontmatter }) => {
   );
 };
 
-export const getStaticProps = async ({ locale }) => {
+export const getStaticProps = async ({ locale, params }) => {
   const homePage = await getListPage("content/_index.md");
   const { frontmatter } = homePage;
+
+  const currentPage = parseInt((params && params.slug) || 1);
+  const { pagination } = config.settings;
+  const posts = getSinglePage(`content/${"blogs"}`).sort(
+    (post1, post2) =>
+      new Date(post2.frontmatter.date) - new Date(post1.frontmatter.date)
+  );
+  const postIndex = await getListPage(`content/${"blogs"}/_index.md`);
+  const mdxContent = await parseMDX(postIndex.content);
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common"])),
       frontmatter,
+      pagination: pagination,
+      posts: posts,
+      currentPage: currentPage,
+      postIndex: postIndex,
+      mdxContent: mdxContent,
     },
   };
 };

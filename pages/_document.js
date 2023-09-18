@@ -6,7 +6,6 @@ const Document = (props) => {
   // destructuring items from config object
   const { favicon } = config.site;
 
-  console.log({ props });
   return (
     <Html dir={props.locale === "fa" ? "rtl" : "ltr"} lang={props.locale}>
       <Head>
