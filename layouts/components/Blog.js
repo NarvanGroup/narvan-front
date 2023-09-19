@@ -11,11 +11,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.min.css";
 
 const { blog_folder } = config.settings;
-console.log({ blog_folder });
 
 // blog pagination
 const Blog = ({ postIndex, posts, currentPage, pagination }) => {
-  console.log({ posts });
   const { t } = useTranslation();
 
   const indexOfLastPost = currentPage * pagination;

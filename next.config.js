@@ -18,8 +18,13 @@ const nextConfig = {
 
   images: {
     formats: ["image/avif", "image/webp"],
-    domains: ["https://flagcdn.com"],
+    domains: ["https://api.nec.co.ir", "https://flagcdn.com"],
     remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "api.nec.co.ir",
+        port: "",
+      },
       {
         protocol: "https",
         hostname: "flagcdn.com",

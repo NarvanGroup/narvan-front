@@ -38,7 +38,7 @@ const App = ({ Component, pageProps }) => {
   }, []);
 
   const dir = router.locale === "fa" ? "rtl" : "ltr";
-  console.log({ router });
+
   useEffect(() => {
     document.documentElement.dir = dir;
   }, [dir]);

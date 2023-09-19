@@ -4,71 +4,107 @@ import Base from "@layouts/Baseof";
 import Pagination from "@layouts/components/Pagination";
 import { markdownify } from "@lib/utils/textConverter";
 import { getProductsService } from "api/services/products";
+import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useTranslation } from "next-i18next";
+import classes from "./index.module.scss";
+import { useRouter } from "next/router";
+import Image from "next/image";
+import {
+  getCategoriesService,
+  getCategoriesWithSubCategoryService,
+} from "api/services/categories";
+import { ProductCard } from "components/ProductCard";
 
-export const Products = () => {
-  const [products, setProducts] = useState([]);
+export const Products = ({ products }) => {
+  const { query } = useRouter();
+  const [categories, setCategories] = useState([]);
 
-  const getProducts = async () => {
+  const getCategories = async () => {
     try {
-      const result = await getProductsService();
-      if (result.success) {
-        setProducts(result.data);
+      const result = await getCategoriesWithSubCategoryService();
+      if (result) {
+        setCategories(result.data);
       }
     } catch (error) {}
   };
 
   useEffect(() => {
-    getProducts();
+    getCategories();
   }, []);
 
+  const { t } = useTranslation();
+
   return (
-    <Base title={"محصولات"}>
-      <section className="section">
-        <div className="container">
-          {markdownify(
-            "محصولات",
-            "h1",
-            "h1 text-center font-normal text-[56px]"
-          )}
-          <div className="section row pb-0">
-            {products.map((product, i) => (
-              <div key={`key-${i}`} className="col-12 mb-8 sm:col-6 lg:col-4">
-                {product.frontmatter.image && (
-                  <Image
-                    className="rounded-lg"
-                    src={product.frontmatter.image}
-                    alt={product.frontmatter.title}
-                    width={i === 0 ? "925" : "445"}
-                    height={i === 0 ? "475" : "230"}
-                  />
-                )}
-                <h2 className="h3 mb-2 mt-4">
-                  <Link
-                    href={`/${blog_folder}/${product.slug}`}
-                    className="block hover:text-primary"
-                  >
-                    {product.frontmatter.title}
-                  </Link>
-                </h2>
-                <p className="text-text">{product.frontmatter.desc}</p>
-                <Link
-                  className="btn btn-primary mt-4"
-                  href={`/${blog_folder}/${product.slug}`}
-                  rel=""
-                >
-                  {t("Read More")}
-                </Link>
+    <section className="section">
+      <div className="container">
+        {markdownify(
+          "محصولات",
+          "h1",
+          "h1 text-center font-normal text-[56px] col-12"
+        )}
+        <div className={classes.container}>
+          <div className={`bg-theme-light ${classes.sidebarContainer}`}>
+            <h3 className={classes.catTitle}>{t("Categories")}</h3>
+            <div className={classes.catBox}>
+              <Link className={`h5 hover:text-primary`} href={`/products`}>
+                {t("All Products")}
+              </Link>
+              {categories?.map((cat) => {
+                return (
+                  <>
+                    <Link
+                      key={cat.slug}
+                      className={`h5 hover:text-primary ${
+                        query?.catId === cat?.slug ? "text-primary" : ""
+                      }`}
+                      href={`/products/category/${cat.slug}`}
+                    >
+                      {cat?.name}
+                    </Link>
+                    <div className={classes.subCatBox}>
+                      {cat.sub_categories?.map((sub) => (
+                        <Link
+                          key={sub.slug}
+                          className="h6 hover:text-primary"
+                          href={`/products/category/${cat.slug}/subcategory/${sub?.slug}`}
+                        >
+                          <li
+                            className={`h6 hover:text-primary ${
+                              query?.subCatId === sub?.slug
+                                ? "text-primary"
+                                : ""
+                            }`}
+                          >
+                            {markdownify(sub?.name, "strong")}
+                          </li>
+                        </Link>
+                      ))}
+                    </div>
+                  </>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className={`section pb-0 ${classes.productsContainer}`}>
+            {products?.map((product) => (
+              <div
+                key={`key-${product?.id}`}
+                className={`col-12 mb-8 sm:col-6 lg:col-3 ${classes.productCard}`}
+              >
+                <ProductCard product={product} />
               </div>
             ))}
           </div>
-          {/* <Pagination
+        </div>
+
+        {/* <Pagination
             section={blog_folder}
             totalPages={totalPages}
             currentPage={currentPage}
           /> */}
-        </div>
-      </section>
-    </Base>
+      </div>
+    </section>
   );
 };

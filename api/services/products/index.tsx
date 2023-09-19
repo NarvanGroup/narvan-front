@@ -6,20 +6,18 @@ export const getProductsService = async () => {
   try {
     const response = await axiosFetcher({
       method: axiosMethods.get,
-      url: `${config.apiVersion1}/blogs`,
+      url: `${config.apiVersion1}/products`,
     });
     return response;
   } catch (error) {}
 };
 
-// export const getProductDetailsService = async (productId: string) => {
-//   try {
-//     const response = await axiosFetcher({
-//       method: axiosMethods.get,
-//       url: `${config.back4front}/scms/products/${productId}`,
-//     });
-//     return response;
-//   } catch (error) {
-//     // throw new Error();
-//   }
-// };
+export const getProductByIdService = async (id: string) => {
+  try {
+    const response = await axiosFetcher({
+      method: axiosMethods.get,
+      url: `${config.apiVersion1}/products/${id}`,
+    });
+    return response;
+  } catch (error) {}
+};
