@@ -12,12 +12,12 @@ export const ProductCard = ({ product }) => {
   };
 
   return (
-    <Link href={`/product/${product.id}`}>
+    <Link href={`/product/${product.slug}`}>
       {product.image && (
         <Image
           className={`rounded-lg ${classes.image}`}
           src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${product.image}`}
-          alt={product.title}
+          alt={product.name}
           width={260}
           height={260}
         />
@@ -33,7 +33,7 @@ export const ProductCard = ({ product }) => {
           <div className="block">{t(product.name)}</div>
         </h2>
         {/* <p className="text-text">{product.description}</p> */}
-        <div className="btn btn-primary mt-4">{t("Read More")}</div>
+        <div className="btn btn-primary mt-4">{t("More Information")}</div>
       </div>
     </Link>
   );

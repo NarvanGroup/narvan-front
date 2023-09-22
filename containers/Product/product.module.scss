@@ -1,0 +1,92 @@
+ 
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    // justify-content: space-between;
+}
+
+.imageContainer {
+    padding-left: 24px;
+    padding-right: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 45%;
+    gap: 16px;
+    @media (max-width: 900px) {
+        flex: 55%;
+    }
+    @media (max-width: 600px) {
+        flex: 100%;
+    }
+}
+
+.infoContainer {    
+    flex: 45%;
+    @media (max-width: 900px) {
+        flex: 40%;
+        padding-top: 24px;
+    }
+    @media (max-width: 600px) {
+        flex: 100%;
+    }
+}
+
+.attBox {
+    padding: 16px;
+    border-radius: 10px;
+    margin-top: 24px;
+    > div {
+        border-bottom: 1px solid #e9e9e9;
+        display: flex;
+        align-items: center;
+        &:last-child {
+            border: none;
+        }
+    }
+    .attTitle {
+        width: 150px;
+    }
+}
+
+.descriptionContainer {
+    flex: 1;
+    margin-top: 30px;
+}
+
+.description{
+    border-bottom: 1px solid #e9e9e9;
+    width: 100%;
+    font-weight: 700;
+    font-size: 24px;
+    color: #000;
+    margin-bottom: 24px;
+}
+
+.image {
+    height: 300px;
+    @media (max-width: 900px) {
+        height: 100%;
+        margin: auto;
+    }
+}
+
+.alert {
+    margin-top: 16px;
+    color: #000;
+    font-weight: 700;
+    font-size: 20px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.catBox {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    color: #000;
+}
+
+ 

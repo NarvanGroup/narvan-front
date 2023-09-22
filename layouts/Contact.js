@@ -1,6 +1,7 @@
 import config from "@config/config.json";
 import { markdownify } from "@lib/utils/textConverter";
 import { useTranslation } from "next-i18next";
+import Image from "next/image";
 
 const Contact = ({ data }) => {
   const { frontmatter } = data;
@@ -14,7 +15,14 @@ const Contact = ({ data }) => {
         {markdownify(t(title), "h1", "text-center font-normal")}
         <div className="section row pb-0">
           <div className="col-12 md:col-6 lg:col-7">
-            <form
+            <Image
+              className="m-auto"
+              alt="contact us"
+              src="/images/contact.svg"
+              width={400}
+              height={400}
+            />
+            {/* <form
               className="contact-form"
               method="POST"
               action={contact_form_action}
@@ -56,7 +64,7 @@ const Contact = ({ data }) => {
               <button type="submit" className="btn btn-primary">
                 {t("Send Now")}
               </button>
-            </form>
+            </form> */}
           </div>
           <div className="content col-12 md:col-6 lg:col-5">
             {markdownify(t(info.title), "h4")}
@@ -64,7 +72,12 @@ const Contact = ({ data }) => {
             <ul className="contact-list mt-5">
               {info.contacts.map((contact, index) => (
                 <li key={index}>
-                  {markdownify(t(contact), "strong", "text-dark")}
+                  {markdownify(t(Object.keys(contact)), "strong", "text-dark")}:{" "}
+                  {markdownify(
+                    t(Object.values(contact)),
+                    "strong",
+                    "text-dark"
+                  )}
                 </li>
               ))}
             </ul>

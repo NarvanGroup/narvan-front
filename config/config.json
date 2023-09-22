@@ -1,12 +1,12 @@
 {
   "site": {
-    "title": "Narvan",
-    "base_url": "/",
+    "title": "Narvan | تجارت الکترونیک نارون",
+    "base_url": "https://nec.co.ir/",
     "favicon": "/images/favicon.png",
     "logo": "/images/logo.png",
     "logo_width": "150",
     "logo_height": "60",
-    "logo_text": "Bigspring Light"
+    "logo_text": "نارون | Narvan"
   },
 
   "settings": {
@@ -25,12 +25,12 @@
     "contact_form_action": "",
     "tag_manager_id": "",
     "footer_content": "footer content",
-    "copyright": "Designed and Developed By [Narvan](https://themefisher.com/)"
+    "copyright": "Designed and Developed By [Narvan](https://nec.co.ir/)"
   },
 
   "metadata": {
-    "meta_author": "Narvan",
-    "meta_image": "",
-    "meta_description": "A SAAS template for nextjs"
+    "meta_author": "Narvan | نارون | تجارت الکترونیک نارون | واردات و صادرات | import | export | واردات | صادرات",
+    "meta_image": "/images/logo.png",
+    "meta_description": "تجارت الکترونیک نارون متخصص واردات و صادرات ابزاآلات و تجهیزات صنعتی و قطعات سخت افزار میباشد. بهترین کیفیت با کمترین قیمت با نارون"
   }
 }

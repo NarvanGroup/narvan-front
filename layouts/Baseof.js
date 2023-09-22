@@ -28,6 +28,12 @@ const Base = ({
           )}
         </title>
 
+        {/* keywords */}
+        <meta
+          name="keywords"
+          content="Import-Export Company, Computer Hardware, Industrial Equipment, Industrial Laser Parts, Global Markets, High-Quality Products, International Trade, Farsi, English, Chinese, Export Services, Import Services, شرکت واردات و صادرات, سخت‌افزار کامپیوتر, تجهیزات صنعتی, قطعات لیزر صنعتی, بازارهای جهانی, محصولات با کیفیت, تجارت بین‌المللی, فارسی, انگلیسی, چینی, خدمات صادرات, خدمات واردات, نارون"
+        />
+
         {/* canonical url */}
         {canonical && <link rel="canonical" href={canonical} itemProp="url" />}
 
@@ -79,13 +85,17 @@ const Base = ({
         {/* og-image */}
         <meta
           property="og:image"
-          content={`${base_url}${image ? image : meta_image}`}
+          content={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${
+            image ? image : meta_image
+          }`}
         />
 
         {/* twitter-image */}
         <meta
           name="twitter:image"
-          content={`${base_url}${image ? image : meta_image}`}
+          content={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${
+            image ? image : meta_image
+          }`}
         />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>

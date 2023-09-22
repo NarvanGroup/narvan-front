@@ -1,33 +1,38 @@
 import Base from "@layouts/Baseof";
+import { plainify } from "@lib/utils/textConverter";
 import {
   getCategoryByIdService,
   getProductsByCategoryService,
   getProductsBySubCategoryService,
 } from "api/services/categories";
-import { getProductsService } from "api/services/products";
+import {
+  getProductBySlugService,
+  getProductsService,
+} from "api/services/products";
+import { Product } from "containers/Product/Product";
 import { Products } from "containers/Products/Products";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 
-function SubCategoryPage({ data }) {
+function ProductPage({ data }) {
   const { query } = useRouter();
-
-  const subCat = data?.sub_categories?.find((s) => s.slug === query?.subCatId);
-
+  console.log({ data });
   return (
     <Base
       title={data?.title}
-      meta_title={`${data?.name} | ${subCat?.name} | تجارت الکترونیک نارون`}
+      meta_title={`${data?.name}  | تجارت الکترونیک نارون`}
+      description={plainify(data?.description)}
+      image={data?.image}
     >
-      <Products products={subCat?.products} />
+      <Product product={data} />
     </Base>
   );
 }
 
-export default SubCategoryPage;
+export default ProductPage;
 
 export const getServerSideProps = async ({ locale, params }) => {
-  const data = await getProductsBySubCategoryService(params?.catId);
+  const data = await getProductBySlugService(params?.slug);
 
   return {
     props: {

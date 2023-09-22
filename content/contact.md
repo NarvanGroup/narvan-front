@@ -6,7 +6,8 @@ info:
   title: Why you should contact us
   description: contact us text
   contacts:
-    - "phone: +98 21 2591 7072"
-    - "Mail: [info@bigspring.com](mailto:info@bigspring.com)"
-    - "Address: 360 Main rd, Rio, Brazil"
+    - phone: "+98 21 2591 7072"
+    - whatsApp: +98 919 075 5375
+    - Mail: info@bigspring.com
+    - Address: "Tehran, Iran"
 ---

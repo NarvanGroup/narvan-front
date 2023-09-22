@@ -12,11 +12,11 @@ export const getProductsService = async (pageNo = 1) => {
   } catch (error) {}
 };
 
-export const getProductByIdService = async (id: string) => {
+export const getProductBySlugService = async (slug: string) => {
   try {
     const response = await axiosFetcher({
       method: axiosMethods.get,
-      url: `${config.apiVersion1}/products/${id}`,
+      url: `${config.apiVersion1}/products/${slug}`,
     });
     return response;
   } catch (error) {}
