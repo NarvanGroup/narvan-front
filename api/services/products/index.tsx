@@ -2,11 +2,11 @@ import axiosFetcher from "api/axios";
 import { config } from "api/config";
 import { axiosMethods } from "shared/constants/axiosMethods";
 
-export const getProductsService = async () => {
+export const getProductsService = async (pageNo = 1) => {
   try {
     const response = await axiosFetcher({
       method: axiosMethods.get,
-      url: `${config.apiVersion1}/products`,
+      url: `${config.apiVersion1}/products?page=${pageNo}`,
     });
     return response;
   } catch (error) {}

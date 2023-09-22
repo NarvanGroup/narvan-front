@@ -35,8 +35,8 @@ const Blogs = ({ data }) => {
 
 export default Blogs;
 
-export const getServerSideProps = async ({ locale }) => {
-  const data = await getBlogsService();
+export const getServerSideProps = async ({ locale, params }) => {
+  const data = await getBlogsService(params?.pageNo);
 
   return {
     props: {

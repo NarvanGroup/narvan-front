@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 function SubCategoryPage({ data }) {
   const { query } = useRouter();
 
-  const subCat = data?.sub_categories?.find((s) => s.id === +query?.subCatId);
+  const subCat = data?.sub_categories?.find((s) => s.slug === query?.subCatId);
   return (
     <Base title={data?.title}>
       <Products products={subCat?.products} />
@@ -22,8 +22,8 @@ function SubCategoryPage({ data }) {
 
 export default SubCategoryPage;
 
-export const getServerSideProps = async ({ locale, id, catId }) => {
-  const data = await getProductsBySubCategoryService(catId);
+export const getServerSideProps = async ({ locale, params }) => {
+  const data = await getProductsBySubCategoryService(params?.catId);
 
   return {
     props: {

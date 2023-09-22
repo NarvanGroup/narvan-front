@@ -22,21 +22,21 @@ export const getCategoryByIdService = async (id: string) => {
   } catch (error) {}
 };
 
-export const getProductsByCategoryService = async (id) => {
+export const getProductsByCategoryService = async (slug) => {
   try {
     const response = await axiosFetcher({
       method: axiosMethods.get,
-      url: `${config.apiVersion1}/categories/${id}?include=products`,
+      url: `${config.apiVersion1}/categories/${slug}?include=products`,
     });
     return response;
   } catch (error) {}
 };
 
-export const getProductsBySubCategoryService = async (id) => {
+export const getProductsBySubCategoryService = async (slug) => {
   try {
     const response = await axiosFetcher({
       method: axiosMethods.get,
-      url: `${config.apiVersion1}/categories/${id}?include=subCategories,subCategories.products`,
+      url: `${config.apiVersion1}/categories/${slug}?include=subCategories,subCategories.products`,
     });
     return response;
   } catch (error) {}

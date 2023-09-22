@@ -246,12 +246,7 @@ const Home = ({ frontmatter, postIndex, posts, currentPage, pagination }) => {
         />
       </section>
 
-      <Blog
-        postIndex={postIndex}
-        posts={posts}
-        currentPage={currentPage}
-        pagination={pagination}
-      />
+      <Blog />
 
       {/* Cta */}
       <Cta cta={call_to_action} />

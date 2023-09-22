@@ -1,11 +1,13 @@
 import config from "@config/config.json";
 import Base from "@layouts/Baseof";
 import { parseMDX } from "@lib/utils/mdxParser";
-import { markdownify } from "@lib/utils/textConverter";
+import { markdownify, plainify } from "@lib/utils/textConverter";
 import Posts from "@partials/Posts";
+import { getBlogsService } from "api/services/blogs";
 import { useTranslation } from "next-i18next";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { Autoplay, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.min.css";
@@ -13,15 +15,24 @@ import "swiper/swiper.min.css";
 const { blog_folder } = config.settings;
 
 // blog pagination
-const Blog = ({ postIndex, posts, currentPage, pagination }) => {
+const Blog = () => {
+  const title = "Latest news";
   const { t } = useTranslation();
 
-  const indexOfLastPost = currentPage * pagination;
-  const indexOfFirstPost = indexOfLastPost - pagination;
-  const totalPages = Math.ceil(posts.length / pagination);
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
-  const { frontmatter, content } = postIndex;
-  const { title } = frontmatter;
+  const [blogs, setBlogs] = useState([]);
+
+  const getBlogs = async () => {
+    try {
+      const result = await getBlogsService();
+      if (result) {
+        setBlogs(result.data);
+      }
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    getBlogs();
+  }, []);
 
   return (
     <section className="section">
@@ -49,30 +60,31 @@ const Blog = ({ postIndex, posts, currentPage, pagination }) => {
             }}
           >
             <div className="section row pb-0">
-              {posts.slice(1).map((post, i) => (
+              {blogs?.map((post, i) => (
                 <SwiperSlide key={i}>
                   <div key={`key-${i}`} className="m-4">
-                    {post.frontmatter.image && (
+                    {post?.images[0] && (
                       <Image
-                        className="rounded-lg"
-                        src={post.frontmatter.image}
-                        alt={post.frontmatter.title}
-                        width={i === 0 ? "925" : "445"}
-                        height={i === 0 ? "475" : "230"}
+                        className="blogImage rounded-lg"
+                        src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${post.images[0]}`}
+                        alt={post.name}
+                        width={"445"}
+                        height={"230"}
                       />
                     )}
                     <h2 className="h3 mb-2 mt-4">
                       <Link
-                        href={`/${blog_folder}/${post.slug}`}
+                        href={`/blogs/${post.slug}`}
                         className="block hover:text-primary"
                       >
-                        {post.frontmatter.title}
+                        {post.name}
                       </Link>
                     </h2>
-                    <p className="text-text">{post.frontmatter.desc}</p>
+                    <p className="text-text">{plainify(post.description)}</p>
+
                     <Link
                       className="btn btn-primary mt-4"
-                      href={`/${blog_folder}/${post.slug}`}
+                      href={`/blogs/${post.slug}`}
                       rel=""
                     >
                       {t("Read More")}

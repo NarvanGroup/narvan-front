@@ -13,12 +13,21 @@ import Image from "next/image";
 import {
   getCategoriesService,
   getCategoriesWithSubCategoryService,
+  getProductsByCategoryService,
 } from "api/services/categories";
 import { ProductCard } from "components/ProductCard";
 
 export const Products = ({ products }) => {
   const { query } = useRouter();
   const [categories, setCategories] = useState([]);
+
+  const getProductsByCategoryServiced = async () => {
+    try {
+      const result = await getProductsByCategoryService("category-test");
+      if (result) {
+      }
+    } catch (error) {}
+  };
 
   const getCategories = async () => {
     try {
@@ -31,6 +40,7 @@ export const Products = ({ products }) => {
 
   useEffect(() => {
     getCategories();
+    getProductsByCategoryServiced();
   }, []);
 
   const { t } = useTranslation();
@@ -47,7 +57,10 @@ export const Products = ({ products }) => {
           <div className={`bg-theme-light ${classes.sidebarContainer}`}>
             <h3 className={classes.catTitle}>{t("Categories")}</h3>
             <div className={classes.catBox}>
-              <Link className={`h5 hover:text-primary`} href={`/products`}>
+              <Link
+                className={`h5 hover:text-primary`}
+                href={`/products/page/1`}
+              >
                 {t("All Products")}
               </Link>
               {categories?.map((cat) => {
@@ -60,24 +73,18 @@ export const Products = ({ products }) => {
                       }`}
                       href={`/products/category/${cat.slug}`}
                     >
-                      {cat?.name}
+                      <li>{cat?.name}</li>
                     </Link>
                     <div className={classes.subCatBox}>
                       {cat.sub_categories?.map((sub) => (
                         <Link
                           key={sub.slug}
-                          className="h6 hover:text-primary"
+                          className={`h6 hover:text-primary ${
+                            query?.subCatId === sub?.slug ? "text-primary" : ""
+                          }`}
                           href={`/products/category/${cat.slug}/subcategory/${sub?.slug}`}
                         >
-                          <li
-                            className={`h6 hover:text-primary ${
-                              query?.subCatId === sub?.slug
-                                ? "text-primary"
-                                : ""
-                            }`}
-                          >
-                            {markdownify(sub?.name, "strong")}
-                          </li>
+                          {markdownify(sub?.name, "strong")}
                         </Link>
                       ))}
                     </div>
