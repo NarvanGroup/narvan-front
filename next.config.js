@@ -5,12 +5,6 @@
 
 const { i18n } = require("./next-i18next.config.js");
 
-const localeSubpaths = {
-  fa: "fa",
-  en: "en",
-  ch: "ch",
-};
-
 const nextConfig = {
   reactStrictMode: true,
 
