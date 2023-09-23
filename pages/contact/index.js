@@ -25,14 +25,11 @@ function ContactPage({ data }) {
 export default ContactPage;
 
 export const getStaticProps = async ({ locale }) => {
-  //   console.log({ params });
-  //   const { regular } = params;
   const regularPage = await getRegularPage("contact");
 
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common"])),
-      //   slug: regular,
       data: regularPage,
     },
   };

@@ -31,6 +31,8 @@ import {
   IoMail,
 } from "react-icons/io5";
 
+import { LiaTelegram } from "react-icons/lia";
+
 const Social = ({ source, className }) => {
   const {
     facebook,
@@ -53,6 +55,7 @@ const Social = ({ source, className }) => {
     reddit,
     vk,
     whatsapp,
+    telegram,
     snapchat,
     vimeo,
     tiktok,
@@ -295,14 +298,26 @@ const Social = ({ source, className }) => {
         </li>
       )}
       {whatsapp && (
-        <li className="inline-block">
+        <li className="ml-4 inline-block ">
           <a
             aria-label="whatsapp"
-            href={whatsapp}
+            href={`whatsapp://send?phone=98${whatsapp}&text=`}
             target="_blank"
             rel="noopener noreferrer nofollow"
           >
             <IoLogoWhatsapp />
+          </a>
+        </li>
+      )}
+      {telegram && (
+        <li className="inline-block">
+          <a
+            aria-label="telegram"
+            href={`https://t.me/${telegram}`}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+          >
+            <LiaTelegram />
           </a>
         </li>
       )}

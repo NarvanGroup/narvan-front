@@ -27,7 +27,7 @@
       "menu": [
         {
           "text": "Products",
-          "url": "/pricing"
+          "url": "/products/page/1"
         },
         {
           "text": "Contact",
@@ -42,14 +42,6 @@
         {
           "text": "FAQ",
           "url": "/faq"
-        },
-        {
-          "text": "شرایط استفاده",
-          "url": "#"
-        },
-        {
-          "text": "قوانین و مقررات",
-          "url": "#"
         }
       ]
     }

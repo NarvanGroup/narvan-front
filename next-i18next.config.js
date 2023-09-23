@@ -14,7 +14,6 @@ module.exports = {
     defaultLocale: "fa",
     locales: ["fa", "en", "ch"],
     localeDetection: false,
-    localeSubpaths,
   },
   localeSubpaths,
 
