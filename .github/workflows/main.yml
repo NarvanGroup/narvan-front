@@ -17,12 +17,11 @@ jobs:
       run: npm run build
     - name: Zip build directory
       run: zip -r build.zip .
-    - name: Upload zip file
-      uses: SamKirkland/FTP-Deploy-Action@master
+    - name: Upload bundle
+      uses: bayssmekanique/action-simple-file-upload@master
       with:
-        server: ${{ secrets.FTP_SERVER}}
-        username: ${{ secrets.FTP_USERNAME}}
-        password: ${{ secrets.FTP_PASSWORD}}
-        local-dir: .
-        remote-dir: /
-        args: --rm build.zip
+        user: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        host: ${{ secrets.FTP_SERVER }}
+        src: ./build.zip
+        dest: build.zip
