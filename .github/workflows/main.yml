@@ -18,7 +18,7 @@ jobs:
     - name: Zip build directory
       run: zip -r build.zip .
     - name: Upload bundle
-      uses: bayssmekanique/action-simple-file-upload@master
+      uses: bayssmekanique/action-simple-file-upload@v1
       with:
         user: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
