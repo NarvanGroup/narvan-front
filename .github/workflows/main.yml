@@ -15,9 +15,14 @@ jobs:
       run: npm install
     - name: Building the project
       run: npm run build
-    - name: 📂 Sync files
+    - name: Zip build directory
+      run: zip -r build.zip .
+    - name: Upload zip file
       uses: SamKirkland/FTP-Deploy-Action@master
       with:
         server: ${{ secrets.FTP_SERVER}}
         username: ${{ secrets.FTP_USERNAME}}
         password: ${{ secrets.FTP_PASSWORD}}
+        local-dir: .
+        remote-dir: /
+        args: --rm build.zip
