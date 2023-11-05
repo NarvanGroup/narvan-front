@@ -29,9 +29,7 @@ export const ProductCard = ({ product }) => {
         >
           {product?.category?.name}
         </h6>
-        <h2 className="h3 mb-2 mt-4">
-          <div className="block">{t(product.name)}</div>
-        </h2>
+        <h3 className={`${classes.name} mb-2 mt-4 block`}>{t(product.name)}</h3>
         {/* <p className="text-text">{product.description}</p> */}
         <div className="btn btn-primary mt-4">{t("More Information")}</div>
       </div>

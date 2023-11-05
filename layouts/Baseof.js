@@ -99,10 +99,16 @@ const Base = ({
         />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <Header />
-      {/* main site */}
-      <main>{children}</main>
-      <Footer />
+      <div
+        style={{
+          position: "relative",
+        }}
+      >
+        <Header />
+        {/* main site */}
+        <main className="main-container">{children}</main>
+        <Footer />
+      </div>
     </>
   );
 };

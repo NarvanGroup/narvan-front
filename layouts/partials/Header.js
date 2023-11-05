@@ -27,8 +27,13 @@ const Header = () => {
     <header className="header">
       <nav className="navbar container">
         {/* logo */}
-        <div className="order-0">
-          <Logo src={logo} />
+        <div
+          className="order-0"
+          style={{
+            marginTop: "-30px",
+          }}
+        >
+          <Logo />
         </div>
 
         {/* navbar toggler */}

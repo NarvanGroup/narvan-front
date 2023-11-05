@@ -6,8 +6,8 @@ info:
   title: Why you should contact us
   description: contact us text
   contacts:
-    - phone: "+98 21 2591 7072"
-    - whatsApp: +98 919 075 5375
-    - Mail: narvangroups@gmail.com
+    - phone: 00982125917072
+    - whatsApp: 00989306057083
+    - Mail: info@nec.co.ir
     - Address: "Narvan Address"
 ---

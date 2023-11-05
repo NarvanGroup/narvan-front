@@ -16,7 +16,7 @@ export const Product = ({ product }) => {
           <div className={classes.imageContainer}>
             {product.image && (
               <Image
-                className={`rounded-lg ${classes.image}`}
+                className={`rounded-lg ${classes.images}`}
                 src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${product.image}`}
                 alt={product.name}
                 width={260}
@@ -50,7 +50,11 @@ export const Product = ({ product }) => {
 
           <div className={classes.descriptionContainer}>
             <p className={classes.description}>{t("Product description")}</p>
-            <p className="text-text">{plainify(product.description)}</p>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: plainify(product.description),
+              }}
+            ></div>
           </div>
         </div>
       </div>

@@ -17,10 +17,18 @@
 
 .navbar-nav {
   @apply text-center md:text-left;
+  @media (max-width: 770px) {
+    margin-top: 24px;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 #nav-menu {
   @apply w-full overflow-hidden md:max-h-full md:w-auto;
+ 
 }
 
 .nav-item {

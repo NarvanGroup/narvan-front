@@ -109,3 +109,11 @@
   .direction-column {
     flex-direction: column;
   }
+
+  .main-container {
+    padding-bottom: 500px;
+    
+    @media (max-width: 600px) {
+      padding-bottom: 700px;
+    }
+  }

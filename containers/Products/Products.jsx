@@ -16,10 +16,12 @@ import {
   getProductsByCategoryService,
 } from "api/services/categories";
 import { ProductCard } from "components/ProductCard";
+import { ArrowDown2, ArrowUp2 } from "iconsax-react";
 
 export const Products = ({ products }) => {
   const { query } = useRouter();
   const [categories, setCategories] = useState([]);
+  const [expanded, setExpanded] = useState([]);
 
   const getProductsByCategoryServiced = async () => {
     try {
@@ -40,11 +42,13 @@ export const Products = ({ products }) => {
 
   useEffect(() => {
     getCategories();
-    getProductsByCategoryServiced();
+    // getProductsByCategoryServiced();
   }, []);
 
   const { t } = useTranslation();
-
+  {
+    console.log({ expanded });
+  }
   return (
     <section className="section">
       <div className="container">
@@ -66,28 +70,60 @@ export const Products = ({ products }) => {
               {categories?.map((cat) => {
                 return (
                   <>
-                    <Link
-                      key={cat.slug}
-                      className={`h5 hover:text-primary ${
-                        query?.catId === cat?.slug ? "text-primary" : ""
-                      }`}
-                      href={`/products/category/${cat.slug}`}
-                    >
-                      <li>{cat?.name}</li>
-                    </Link>
-                    <div className={classes.subCatBox}>
-                      {cat.sub_categories?.map((sub) => (
-                        <Link
-                          key={sub.slug}
-                          className={`h6 hover:text-primary ${
-                            query?.subCatId === sub?.slug ? "text-primary" : ""
-                          }`}
-                          href={`/products/category/${cat.slug}/subcategory/${sub?.slug}`}
+                    <div className={classes.categoryTitle}>
+                      {cat.sub_categories?.length > 0 &&
+                        (expanded.find((x) => x === cat.slug) ? (
+                          <ArrowUp2
+                            style={{
+                              cursor: "pointer",
+                            }}
+                            onClick={() => {
+                              const f = expanded?.filter((x) => x !== cat.slug);
+                              setExpanded(f);
+                            }}
+                          />
+                        ) : (
+                          <ArrowDown2
+                            style={{
+                              cursor: "pointer",
+                            }}
+                            onClick={() => setExpanded([...expanded, cat.slug])}
+                          />
+                        ))}
+                      <Link
+                        key={cat.slug}
+                        className={`h5 hover:text-primary ${
+                          query?.catId === cat?.slug ? "text-primary" : ""
+                        }`}
+                        href={`/products/category/${cat.slug}`}
+                      >
+                        <h3
+                          className={`h5 hover:text-primary ${classes.catName}`}
                         >
-                          {markdownify(sub?.name, "strong")}
-                        </Link>
-                      ))}
+                          {cat?.name}
+                        </h3>
+                      </Link>
                     </div>
+
+                    {cat.sub_categories?.length > 0 &&
+                      expanded.find((x) => x === cat.slug) && (
+                        <div className={classes.subCatBox}>
+                          {cat.sub_categories?.map((sub) => (
+                            <Link
+                              key={sub.slug}
+                              className={`h6 hover:text-primary ${
+                                query?.subCatId === sub?.slug
+                                  ? "text-primary"
+                                  : ""
+                              }`}
+                              href={`/products/category/${cat.slug}/subcategory/${sub?.slug}`}
+                            >
+                              {markdownify(sub?.name, "strong")}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    <hr />
                   </>
                 );
               })}

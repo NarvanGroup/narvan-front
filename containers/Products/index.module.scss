@@ -6,7 +6,7 @@
     border-radius: 10px;
     padding-bottom: 16px;
     width: 260px;
-    max-height: 420px;
+    max-height: 500px;
 }
 
 .container {
@@ -20,13 +20,14 @@
     padding-right: 24px;
     display: flex;
     flex-wrap: wrap;
-    flex: 80%;
+    flex: 70%;
     gap: 16px;
     @media (max-width: 900px) {
         flex: 60%;
     }
     @media (max-width: 600px) {
         flex: 100%;
+        justify-content: center;
     }
 }
 
@@ -34,7 +35,7 @@
     padding: 25px 30px;
     border-radius: 10px;
     margin-bottom: 30px !important;
-    flex: 20%;
+    flex: 30%;
     @media (max-width: 900px) {
         flex: 40%;
     }
@@ -67,6 +68,16 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    margin-right: 8px;
-    margin-left: 8px;
+    margin-left: 32px;
+    margin-right: 32px;
+}
+
+.categoryTitle {
+    display: flex;
+    gap: 8px;
+}
+
+.catName {
+    font-size: 18px;
+    font-weight: 500;
 }

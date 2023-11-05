@@ -14,7 +14,7 @@ const Footer = () => {
   const { t } = useTranslation();
 
   return (
-    <footer className="section bg-theme-light pb-0">
+    <footer className="footer-container section bg-theme-light pb-0">
       <div className="container">
         {/* footer menu */}
         <div className="row">

@@ -1,11 +1,19 @@
 import config from "@config/config.json";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Logo = ({ src }) => {
+  const router = useRouter();
+
   // destructuring items from config object
   const { base_url, logo, logo_width, logo_height, logo_text, title } =
     config.site;
+
+  const defaultLogo =
+    router.locale === "fa"
+      ? "/images/Logo_farsi.png"
+      : "/images/Logo_Narvan - English.png";
 
   return (
     <Link
@@ -20,7 +28,7 @@ const Logo = ({ src }) => {
         <Image
           width={logo_width.replace("px", "")}
           height={logo_height.replace("px", "")}
-          src={src ? src : logo}
+          src={src ? src : defaultLogo}
           alt={title}
           priority
         />

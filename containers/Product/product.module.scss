@@ -22,7 +22,11 @@
     }
 }
 
-.infoContainer {    
+.infoContainer {   
+    h1 {
+        font-weight: 700;
+        font-size: 24px; 
+    }
     flex: 45%;
     @media (max-width: 900px) {
         flex: 40%;

@@ -8,6 +8,13 @@
   @apply mx-auto max-w-[1140px] px-4;
 }
 
+.footer-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0
+}
+
 // form style
 .form-inputs * {
   @apply mb-5 leading-10;
@@ -44,6 +51,8 @@
 
   ul {
     li {
+      display: flex;
+      gap: 4px;
       @apply relative pl-5 before:absolute before:left-0 before:top-[10px] before:h-2 before:w-2 before:rounded-full before:bg-primary before:content-[''];
     }
   }
@@ -137,6 +146,7 @@
 
 //contact
 .contact-list {
+  
   a {
     @apply font-semibold text-dark;
   }
