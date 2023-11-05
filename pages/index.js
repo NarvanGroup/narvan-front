@@ -7,7 +7,6 @@ import Link from "next/link";
 import { Autoplay, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.min.css";
-import { getListPage, getSinglePage } from "../lib/contentParser";
 import {
   Global,
   People,
@@ -21,14 +20,23 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { parseMDX } from "@lib/utils/mdxParser";
 import Blog from "@layouts/components/Blog";
+import { getProductsService } from "api/services/products";
+import { getBlogsService } from "api/services/blogs";
+import {
+  NarvanProducts,
+  banner,
+  call_to_action,
+  feature,
+  services,
+  workflow,
+} from "content/_index";
+import { ProductsSwiper } from "@layouts/components/ProductsSwiper";
 
 const { title, blog_folder } = config.site;
 
-const Home = ({ frontmatter, postIndex, posts, currentPage, pagination }) => {
+const Home = ({ productsList, blogPosts }) => {
   const router = useRouter();
 
-  const { banner, feature, services, workflow, call_to_action, products } =
-    frontmatter;
   const { t } = useTranslation();
 
   const getFeatureIcon = (name) => {
@@ -95,34 +103,27 @@ const Home = ({ frontmatter, postIndex, posts, currentPage, pagination }) => {
       <section className="section">
         <div className="container">
           <div className="text-center">
-            <h2>{markdownify(t(products?.title))}</h2>
+            <h2>{markdownify(t(NarvanProducts?.title))}</h2>
           </div>
           <div className="mt-8 grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-2">
-            {products?.categories.map((item, i) => (
-              <div
-                className="category-card rounded-xl bg-white p-5 pb-8 text-center"
-                key={`product-${i}`}
-                style={{
-                  backgroundImage: `url(${item?.image})`,
-                }}
-              >
-                {/* {item.icon && (
-                  <Image
-                    className="mx-auto"
-                    src={item.icon}
-                    width={30}
-                    height={30}
-                    alt=""
-                  />
-                )} */}
-                <div className="category-title mt-4 p-16">
-                  {markdownify(t(item.name), "h3", "h5")}
-                  {/* <p className="mt-3">{t(item.content)}</p> */}
+            {NarvanProducts?.categories.map((item, i) => (
+              <Link href="/products/page/1">
+                <div
+                  className="category-card rounded-xl bg-white p-5 pb-8 text-center"
+                  key={`product-${i}`}
+                  style={{
+                    backgroundImage: `url(${item?.image})`,
+                  }}
+                >
+                  <div className="category-title mt-4 p-16">
+                    {markdownify(t(item.name), "h3", "h5")}
+                  </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
+        <ProductsSwiper products={productsList} />
       </section>
 
       {/* Features */}
@@ -181,7 +182,7 @@ const Home = ({ frontmatter, postIndex, posts, currentPage, pagination }) => {
                     init={service?.images > 1 ? false : true}
                   >
                     {/* Slides */}
-                    {service?.images.map((slide, index) => (
+                    {service?.images?.map((slide, index) => (
                       <SwiperSlide key={index}>
                         <Image
                           style={{ borderRadius: "10px" }}
@@ -246,7 +247,7 @@ const Home = ({ frontmatter, postIndex, posts, currentPage, pagination }) => {
         />
       </section>
 
-      <Blog />
+      <Blog blogs={blogPosts} />
 
       {/* Cta */}
       <Cta cta={call_to_action} />
@@ -254,30 +255,17 @@ const Home = ({ frontmatter, postIndex, posts, currentPage, pagination }) => {
   );
 };
 
-export const getStaticProps = async ({ locale, params }) => {
-  const homePage = await getListPage("content/_index.md");
-  const { frontmatter } = homePage;
+export default Home;
 
-  const currentPage = parseInt((params && params.slug) || 1);
-  const { pagination } = config.settings;
-  const posts = getSinglePage(`content/${"blogs"}`).sort(
-    (post1, post2) =>
-      new Date(post2.frontmatter.date) - new Date(post1.frontmatter.date)
-  );
-  const postIndex = await getListPage(`content/${"blogs"}/_index.md`);
-  const mdxContent = await parseMDX(postIndex.content);
+export const getServerSideProps = async ({ locale }) => {
+  const productsList = await getProductsService();
+  const blogPosts = await getBlogsService();
 
   return {
     props: {
+      productsList: productsList?.data || [],
+      blogPosts: blogPosts?.data || [],
       ...(await serverSideTranslations(locale, ["common"])),
-      frontmatter,
-      pagination: pagination,
-      posts: posts,
-      currentPage: currentPage,
-      postIndex: postIndex,
-      mdxContent: mdxContent,
     },
   };
 };
-
-export default Home;

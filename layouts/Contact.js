@@ -2,12 +2,14 @@ import config from "@config/config.json";
 import { markdownify } from "@lib/utils/textConverter";
 import { useTranslation } from "next-i18next";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const Contact = ({ data }) => {
   const { frontmatter } = data;
   const { title, info } = frontmatter;
   const { contact_form_action } = config.params;
   const { t } = useTranslation();
+  const router = useRouter();
 
   return (
     <section className="section">
@@ -66,7 +68,11 @@ const Contact = ({ data }) => {
               </button>
             </form> */}
           </div>
-          <div className="content col-12 md:col-6 lg:col-5">
+          <div
+            className={`content col-12 md:col-6 lg:col-5 ${
+              router.locale !== "fa" && "english-font"
+            }`}
+          >
             {markdownify(t(info.title), "h4")}
             {markdownify(t(info.description), "p", "mt-4")}
             <ul className="contact-list mt-5">

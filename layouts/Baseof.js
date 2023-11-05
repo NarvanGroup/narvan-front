@@ -13,6 +13,7 @@ const Base = ({
   noindex,
   canonical,
   children,
+  keywords,
 }) => {
   const { meta_image, meta_author, meta_description } = config.metadata;
   const { base_url } = config.site;
@@ -31,7 +32,11 @@ const Base = ({
         {/* keywords */}
         <meta
           name="keywords"
-          content="Import-Export Company, Computer Hardware, Industrial Equipment, Industrial Laser Parts, Global Markets, High-Quality Products, International Trade, Farsi, English, Chinese, Export Services, Import Services, شرکت واردات و صادرات, سخت‌افزار کامپیوتر, تجهیزات صنعتی, قطعات لیزر صنعتی, بازارهای جهانی, محصولات با کیفیت, تجارت بین‌المللی, فارسی, انگلیسی, چینی, خدمات صادرات, خدمات واردات, نارون"
+          content={
+            keywords
+              ? keywords
+              : "Import-Export Company, Computer Hardware, Industrial Equipment, Industrial Laser Parts, Global Markets, High-Quality Products, International Trade, Farsi, English, Chinese, Export Services, Import Services, شرکت واردات و صادرات, سخت‌افزار کامپیوتر, تجهیزات صنعتی, قطعات لیزر صنعتی, بازارهای جهانی, محصولات با کیفیت, تجارت بین‌المللی, فارسی, انگلیسی, چینی, خدمات صادرات, خدمات واردات, نارون"
+          }
         />
 
         {/* canonical url */}

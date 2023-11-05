@@ -15,24 +15,24 @@ import "swiper/swiper.min.css";
 const { blog_folder } = config.settings;
 
 // blog pagination
-const Blog = () => {
+const Blog = ({ blogs }) => {
   const title = "Latest news";
   const { t } = useTranslation();
 
-  const [blogs, setBlogs] = useState([]);
+  // const [blogs, setBlogs] = useState([]);
 
-  const getBlogs = async () => {
-    try {
-      const result = await getBlogsService();
-      if (result) {
-        setBlogs(result.data);
-      }
-    } catch (error) {}
-  };
+  // const getBlogs = async () => {
+  //   try {
+  //     const result = await getBlogsService();
+  //     if (result) {
+  //       setBlogs(result.data);
+  //     }
+  //   } catch (error) {}
+  // };
 
-  useEffect(() => {
-    getBlogs();
-  }, []);
+  // useEffect(() => {
+  //   getBlogs();
+  // }, []);
 
   return (
     <section className="section">
@@ -62,8 +62,11 @@ const Blog = () => {
             <div className="section row pb-0">
               {blogs?.map((post, i) => (
                 <SwiperSlide key={i}>
-                  <div key={`key-${i}`} className="m-4">
-                    {post?.images[0] && (
+                  <div
+                    key={`key-${i}`}
+                    className="box-shadow-1 radius-10 m-8 p-2"
+                  >
+                    {post?.images && post?.images[0] && (
                       <Image
                         className="blogImage rounded-lg"
                         src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${post.images[0]}`}
@@ -77,7 +80,9 @@ const Blog = () => {
                         href={`/blogs/${post.slug}`}
                         className="block hover:text-primary"
                       >
-                        {post.name}
+                        <h3 className={`h6 mb-2 mt-4 block hover:text-primary`}>
+                          {post.name}
+                        </h3>
                       </Link>
                     </h2>
                     <p className="text-text">{plainify(post.description)}</p>

@@ -112,8 +112,31 @@
 
   .main-container {
     padding-bottom: 500px;
+    overflow-x: hidden;
     
     @media (max-width: 600px) {
       padding-bottom: 700px;
+    }
+  }
+
+  .box-shadow-1 {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+
+  .radius-10 {
+    border-radius: 10px;
+  }
+
+  .select-button {
+    border: none !important;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px !important;
+    margin: 8px;
+    cursor: pointer;
+  }
+
+  .english-font {
+    font-family: IRANSansX !important;
+    * {
+    font-family: IRANSansX !important;
     }
   }

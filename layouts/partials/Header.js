@@ -18,11 +18,8 @@ const Header = () => {
   // states declaration
   const [navOpen, setNavOpen] = useState(false);
 
-  // logo source
-  const { logo } = config.site;
   const { enable, label, link } = config.nav_button;
 
-  const handleClickMenu = () => {};
   return (
     <header className="header">
       <nav className="navbar container">
@@ -65,7 +62,7 @@ const Header = () => {
             navOpen ? "max-h-[1000px]" : "max-h-0"
           }`}
         >
-          <ul className="navbar-nav block w-full md:flex md:w-auto lg:space-x-2">
+          <ul className="navbar-nav block w-full items-center md:flex md:w-auto lg:space-x-2">
             {main.map((menu, i) => (
               <React.Fragment key={`menu-${i}`}>
                 {menu.hasChildren ? (
@@ -107,6 +104,16 @@ const Header = () => {
               </React.Fragment>
             ))}
             <LanguageSwitcher />
+            <a
+              className={`btn btn-primary-phone m-1 p-2 ${
+                router.locale !== "fa" && "english-font"
+              }`}
+              href={`tel:+989306057083`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              09306057083
+            </a>
             {enable && (
               <li className="md:hidden">
                 <Link

@@ -13,7 +13,7 @@ const Posts = ({ posts }) => {
       <div className="col-12 pb-12 lg:pb-24">
         <div className="row items-center">
           <div className="col-12 md:col-6">
-            {posts[0]?.images[0] && (
+            {posts[0]?.images && posts[0]?.images[0] && (
               <Image
                 className="h-auto w-full rounded-lg"
                 src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${posts[0]?.images[0]}`}

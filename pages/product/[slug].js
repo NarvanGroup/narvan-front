@@ -15,11 +15,12 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 
 function ProductPage({ data }) {
-  const { query } = useRouter();
-  console.log({ data });
+  let keywords = "";
+  data?.tags?.map((t) => (keywords = keywords + " | " + t));
   return (
     <Base
       title={data?.title}
+      keywords={keywords}
       meta_title={`${data?.name}  | تجارت الکترونیک نارون`}
       description={plainify(data?.description)}
       image={data?.image}

@@ -4,10 +4,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
 }
 
 .image {
     height: 260px;
+    width: auto;
 }
 
 .name {
@@ -19,3 +21,23 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 }
+
+.button {
+    width: fit-content;
+    justify-self: flex-end;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    padding-bottom: 16px;
+    max-height: 480px;
+ }
+
+ 

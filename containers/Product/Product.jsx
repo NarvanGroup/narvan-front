@@ -16,7 +16,7 @@ export const Product = ({ product }) => {
           <div className={classes.imageContainer}>
             {product.image && (
               <Image
-                className={`rounded-lg ${classes.images}`}
+                className={`w-full rounded-lg ${classes.images}`}
                 src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${product.image}`}
                 alt={product.name}
                 width={260}
@@ -55,6 +55,14 @@ export const Product = ({ product }) => {
                 __html: plainify(product.description),
               }}
             ></div>
+          </div>
+
+          <div className={classes.tagContainer}>
+            <p className={classes.tagTitle}>{t("Tags")}: </p>
+
+            {product?.tags?.map((t) => (
+              <div className={classes.tagBox}>{t}</div>
+            ))}
           </div>
         </div>
       </div>
