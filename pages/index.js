@@ -31,12 +31,11 @@ import {
   workflow,
 } from "content/_index";
 import { ProductsSwiper } from "@layouts/components/ProductsSwiper";
+import { useEffect, useState } from "react";
 
-const { title, blog_folder } = config.site;
+const { title } = config.site;
 
-const Home = ({ productsList, blogPosts }) => {
-  const router = useRouter();
-
+const Home = () => {
   const { t } = useTranslation();
 
   const getFeatureIcon = (name) => {
@@ -62,6 +61,32 @@ const Home = ({ productsList, blogPosts }) => {
         break;
     }
   };
+
+  const [blogs, setBlogs] = useState([]);
+  const [productsList, setProductsList] = useState([]);
+
+  const getBlogs = async () => {
+    try {
+      const result = await getBlogsService();
+      if (result) {
+        setBlogs(result.data);
+      }
+    } catch (error) {}
+  };
+
+  const getProducts = async () => {
+    try {
+      const result = await getProductsService();
+      if (result) {
+        setProductsList(result.data);
+      }
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    getBlogs();
+    getProducts();
+  }, []);
 
   return (
     <Base title={title}>
@@ -247,7 +272,7 @@ const Home = ({ productsList, blogPosts }) => {
         />
       </section>
 
-      <Blog blogs={blogPosts} />
+      <Blog blogs={blogs} />
 
       {/* Cta */}
       <Cta cta={call_to_action} />
@@ -257,14 +282,9 @@ const Home = ({ productsList, blogPosts }) => {
 
 export default Home;
 
-export const getServerSideProps = async ({ locale }) => {
-  const productsList = await getProductsService();
-  const blogPosts = await getBlogsService();
-
+export const getStaticProps = async ({ locale }) => {
   return {
     props: {
-      productsList: productsList?.data || [],
-      blogPosts: blogPosts?.data || [],
       ...(await serverSideTranslations(locale, ["common"])),
     },
   };
