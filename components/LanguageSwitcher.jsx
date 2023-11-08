@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { useRouter } from "next/router";
 
 export default function LanguageSwitcher() {
@@ -18,17 +17,18 @@ export default function LanguageSwitcher() {
   return (
     <select
       onChange={handleChange}
-      class="select-button block w-auto rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+      value={router?.locale}
+      className="select-button block w-auto rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
     >
-      <option selected={router?.locale === "en"} value="en">
+      <option value="en">
         {/* &#127468;&#127463; */}
         English
       </option>
-      <option selected={router?.locale === "fa"} value="fa">
+      <option value="fa">
         {/* &#x1F1EE;&#x1F1F7;  */}
         فارسی
       </option>
-      <option selected={router?.locale === "ch"} value="ch">
+      <option value="ch">
         {/* &#x1F1E8;&#x1F1F3;  */}
         chinese
       </option>

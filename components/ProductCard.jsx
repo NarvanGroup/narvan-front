@@ -31,7 +31,7 @@ export const ProductCard = ({ product }) => {
             {product?.category?.name}
           </h6>
           <h3 className={`${classes.name} mb-2 mt-4 block hover:text-primary`}>
-            {t(product.name)}
+            {product.name}
           </h3>
           {/* <p className="text-text">{product.description}</p> */}
         </div>

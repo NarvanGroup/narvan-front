@@ -132,7 +132,7 @@ const Home = () => {
           </div>
           <div className="mt-8 grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-2">
             {NarvanProducts?.categories.map((item, i) => (
-              <Link href="/products/page/1">
+              <Link key={i} href="/products/page/1">
                 <div
                   className="category-card rounded-xl bg-white p-5 pb-8 text-center"
                   key={`product-${i}`}
