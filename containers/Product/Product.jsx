@@ -52,7 +52,7 @@ export const Product = ({ product }) => {
             <p className={classes.description}>{t("Product description")}</p>
             <div
               dangerouslySetInnerHTML={{
-                __html: plainify(product.description),
+                __html: product.description
               }}
             ></div>
           </div>
