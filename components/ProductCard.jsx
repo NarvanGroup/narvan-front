@@ -18,7 +18,7 @@ export const ProductCard = ({ product }) => {
           <Image
             className={`rounded-lg ${classes.image}`}
             src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${product.image}`}
-            alt={product.name}
+            alt={product?.name_fa}
             width={260}
             height={260}
           />
@@ -31,7 +31,7 @@ export const ProductCard = ({ product }) => {
             {product?.category?.name}
           </h6>
           <h3 className={`${classes.name} mb-2 mt-4 block hover:text-primary`}>
-            {product.name}
+            {product?.name_fa}
           </h3>
           {/* <p className="text-text">{product.description}</p> */}
         </div>

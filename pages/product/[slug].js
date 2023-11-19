@@ -21,7 +21,7 @@ function ProductPage({ data }) {
     <Base
       title={data?.title}
       keywords={keywords}
-      meta_title={`${data?.name}  | تجارت الکترونیک نارون`}
+      meta_title={`${data?.name_fa}  | تجارت الکترونیک نارون`}
       description={plainify(data?.description)}
       image={data?.image}
     >

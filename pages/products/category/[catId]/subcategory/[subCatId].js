@@ -1,10 +1,5 @@
 import Base from "@layouts/Baseof";
-import {
-  getCategoryByIdService,
-  getProductsByCategoryService,
-  getProductsBySubCategoryService,
-} from "api/services/categories";
-import { getProductsService } from "api/services/products";
+import { getProductsBySubCategoryService } from "api/services/categories";
 import { Products } from "containers/Products/Products";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";

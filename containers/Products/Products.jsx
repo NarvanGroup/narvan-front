@@ -23,39 +23,29 @@ export const Products = ({ products }) => {
   const [categories, setCategories] = useState([]);
   const [expanded, setExpanded] = useState([]);
 
-  const getProductsByCategoryServiced = async () => {
-    try {
-      const result = await getProductsByCategoryService("category-test");
-      if (result) {
-      }
-    } catch (error) {}
-  };
-
   const getCategories = async () => {
     try {
       const result = await getCategoriesWithSubCategoryService();
       if (result) {
         setCategories(result.data);
+        result?.data?.map((cat) => setExpanded((prev) => [...prev, cat.slug]));
       }
     } catch (error) {}
   };
 
   useEffect(() => {
     getCategories();
-    // getProductsByCategoryServiced();
   }, []);
 
   const { t } = useTranslation();
-  {
-    console.log({ expanded });
-  }
+
   return (
     <section className="section">
-      <div className="container">
+      <div>
         {markdownify(
           "محصولات",
           "h1",
-          "h1 text-center font-normal text-[56px] col-12"
+          "h1 text-center font-normal text-[56px] col-12 mb-8"
         )}
         <div className={classes.container}>
           <div className={`bg-theme-light ${classes.sidebarContainer}`}>
@@ -123,7 +113,7 @@ export const Products = ({ products }) => {
                           ))}
                         </div>
                       )}
-                    <hr />
+                    {/* <hr /> */}
                   </>
                 );
               })}

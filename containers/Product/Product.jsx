@@ -18,7 +18,7 @@ export const Product = ({ product }) => {
               <Image
                 className={`w-full rounded-lg ${classes.images}`}
                 src={`${process.env.NEXT_PUBLIC_IMAGE_URL}/${product.image}`}
-                alt={product.name}
+                alt={product.name_fa}
                 width={260}
                 height={260}
               />
@@ -27,7 +27,7 @@ export const Product = ({ product }) => {
 
           <div className={`section pb-0 ${classes.infoContainer}`}>
             {markdownify(
-              t(product?.name),
+              t(product?.name_fa),
               "h1",
               "h1 font-normal text-[56px] col-12"
             )}
@@ -52,7 +52,7 @@ export const Product = ({ product }) => {
             <p className={classes.description}>{t("Product description")}</p>
             <div
               dangerouslySetInnerHTML={{
-                __html: product.description
+                __html: product.description,
               }}
             ></div>
           </div>
