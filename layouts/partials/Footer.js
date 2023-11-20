@@ -2,16 +2,24 @@ import Social from "@components/Social";
 import config from "@config/config.json";
 import menu from "@config/menu.json";
 import social from "@config/social.json";
+import Logo from "@layouts/components/Logo";
 import { markdownify } from "@lib/utils/textConverter";
 import { useTranslation } from "next-i18next";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Footer = () => {
   const { copyright, footer_content } = config.params;
   const { footer } = menu;
+  const router = useRouter();
 
   const { t } = useTranslation();
+
+  const defaultLogo =
+    router.locale === "fa"
+      ? "/images/Logo_farsi.png"
+      : "/images/Logo_Narvan - English.png";
 
   return (
     <footer className="footer-container section bg-theme-light pb-0">
@@ -36,9 +44,9 @@ const Footer = () => {
           })}
           {/* social icons */}
           <div className="md-12 sm:col-6 lg:col-6">
-            <Link href="/" aria-label="Bigspring">
+            <Link href="/" aria-label="narvan e-commerce">
               <Image
-                src={config.site.logo}
+                src={defaultLogo}
                 width={config.site.logo_width}
                 height={config.site.logo_height}
                 alt=""

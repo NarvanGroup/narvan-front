@@ -90,7 +90,7 @@ export const Products = ({ products }) => {
                         <h3
                           className={`h5 hover:text-primary ${classes.catName}`}
                         >
-                          {cat?.name}
+                          {cat?.name_fa}
                         </h3>
                       </Link>
                     </div>
@@ -108,7 +108,7 @@ export const Products = ({ products }) => {
                               }`}
                               href={`/products/category/${cat.slug}/subcategory/${sub?.slug}`}
                             >
-                              {markdownify(sub?.name, "strong")}
+                              {markdownify(sub?.name_fa, "strong")}
                             </Link>
                           ))}
                         </div>
