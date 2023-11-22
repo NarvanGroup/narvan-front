@@ -10,8 +10,8 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 function CategoryPage({ data }) {
   return (
     <Base
-      title={data?.name}
-      meta_title={`${data?.name} | تجارت الکترونیک نارون`}
+      title={data?.name_fa}
+      meta_title={`${data?.name_fa} | تجارت الکترونیک نارون`}
     >
       <Products products={data?.products} />
     </Base>

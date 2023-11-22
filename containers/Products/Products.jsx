@@ -1,20 +1,12 @@
 // import { getProductsService } from "@/api/services/productServices";
 
-import Base from "@layouts/Baseof";
-import Pagination from "@layouts/components/Pagination";
 import { markdownify } from "@lib/utils/textConverter";
-import { getProductsService } from "api/services/products";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useTranslation } from "next-i18next";
 import classes from "./index.module.scss";
 import { useRouter } from "next/router";
-import Image from "next/image";
-import {
-  getCategoriesService,
-  getCategoriesWithSubCategoryService,
-  getProductsByCategoryService,
-} from "api/services/categories";
+import { getCategoriesWithSubCategoryService } from "api/services/categories";
 import { ProductCard } from "components/ProductCard";
 import { ArrowDown2, ArrowUp2 } from "iconsax-react";
 

@@ -6,13 +6,11 @@ import { useRouter } from "next/router";
 
 function SubCategoryPage({ data }) {
   const { query } = useRouter();
-
   const subCat = data?.sub_categories?.find((s) => s.slug === query?.subCatId);
-
   return (
     <Base
-      title={data?.title}
-      meta_title={`${data?.name} | ${subCat?.name} | تجارت الکترونیک نارون`}
+      title={data?.name_fa}
+      meta_title={`${subCat?.name_fa} | ${data?.name_fa} | تجارت الکترونیک نارون`}
     >
       <Products products={subCat?.products} />
     </Base>

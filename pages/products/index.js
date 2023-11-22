@@ -5,10 +5,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 function ProductsPage({ products }) {
   return (
-    <Base
-      title="products"
-      meta_title="محصولات | ابزارآلات صنعتی | قطعات سخت افزاری | لیزر صنعتی"
-    >
+    <Base title="products" meta_title="محصولات | تجارت الکترونیک نارون">
       <Products products={products} />
     </Base>
   );
