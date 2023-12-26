@@ -82,7 +82,7 @@ const Contact = ({ data }) => {
                   {markdownify(
                     t(Object.values(contact)),
                     "strong",
-                    "text-dark"
+                    "text-dark ltr"
                   )}
                 </li>
               ))}

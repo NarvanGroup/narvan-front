@@ -2,3 +2,6 @@ User-agent: *
 Allow: /
 
 Disallow: /api/*
+Allow: /blogs/*?*
+          
+sitemap: https://www.azki.com/sitemap.xml
