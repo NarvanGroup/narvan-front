@@ -1,7 +1,6 @@
 import { markdownify, plainify } from "@lib/utils/textConverter";
 
 import Image from "next/image";
-import Base from "./Baseof";
 
 const PostSingle = ({ post }) => {
   return (
@@ -20,7 +19,9 @@ const PostSingle = ({ post }) => {
                 className="rounded-lg"
               />
             )}
-            {markdownify(post.name, "h1", "h2 mb-6 mt-6 text-center")}
+
+            {console.log({ post })}
+            {markdownify(post?.name_fa, "h1", "h2 mb-6 mt-6 text-center")}
 
             <div className="content mb-16 text-left">
               <p
@@ -29,7 +30,11 @@ const PostSingle = ({ post }) => {
                 }}
                 className="text-text"
               >
-                {plainify(post.content)}
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: post?.content,
+                  }}
+                ></div>
               </p>
             </div>
           </article>

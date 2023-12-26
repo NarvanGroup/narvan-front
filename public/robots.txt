@@ -4,4 +4,4 @@ Allow: /
 Disallow: /api/*
 Allow: /blogs/*?*
           
-sitemap: https://www.azki.com/sitemap.xml
+sitemap: https://nec.co.ir/sitemap.xml

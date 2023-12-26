@@ -1,4 +1,3 @@
-import config from "@config/config.json";
 import Base from "@layouts/Baseof";
 import PostSingle from "@layouts/PostSingle";
 import { plainify } from "@lib/utils/textConverter";
@@ -9,11 +8,12 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 const Article = ({ data }) => {
   let keywords = "";
   data?.tags?.map((t) => (keywords = keywords + " | " + t));
+
   return (
     <Base
       title={data?.name}
       keywords={keywords}
-      meta_title={`${data?.name}  | تجارت الکترونیک نارون`}
+      meta_title={`${data?.name_fa}  | تجارت الکترونیک نارون`}
       description={plainify(data?.description)}
       image={data?.image}
     >
