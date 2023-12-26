@@ -28,14 +28,14 @@ const Posts = ({ posts }) => {
             <h2 className="h3 mb-2 mt-4">
               <Link
                 href={`/blogs/${posts[0]?.slug}`}
-                className="block hover:text-primary"
+                className="mb-8 block hover:text-primary"
               >
-                {posts[0]?.name}
+                {posts[0]?.name_fa}
               </Link>
             </h2>
             <p className="text-text">
               {plainify(
-                posts[0]?.content?.slice(0, Number(summary_length)),
+                posts[0]?.description?.slice(0, Number(summary_length)),
                 "div"
               )}
             </p>

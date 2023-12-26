@@ -1,14 +1,16 @@
 import config from "@config/config.json";
 import theme from "@config/theme.json";
 import Head from "next/head";
-import { useRouter } from "next/router";
+import { Router, useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import TagManager from "react-gtm-module";
 import "styles/style.scss";
 import "styles/global.scss";
 import { appWithTranslation } from "next-i18next";
+import Loader from "components/Loader";
 const App = ({ Component, pageProps }) => {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
 
   // default theme setup
 
@@ -43,6 +45,20 @@ const App = ({ Component, pageProps }) => {
     document.documentElement.dir = dir;
   }, [dir]);
 
+  useEffect(() => {
+    Router.events.on("routeChangeStart", (url) => {
+      setIsLoading(true);
+    });
+
+    Router.events.on("routeChangeComplete", (url) => {
+      setIsLoading(false);
+    });
+
+    Router.events.on("routeChangeError", (url) => {
+      setIsLoading(false);
+    });
+  }, [Router]);
+
   return (
     <>
       <Head>
@@ -63,7 +79,8 @@ const App = ({ Component, pageProps }) => {
           content="width=device-width, initial-scale=1, maximum-scale=5"
         />
       </Head>
-
+      {isLoading && <Loader />}
+      {}
       <Component {...pageProps} />
     </>
   );

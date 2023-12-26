@@ -20,7 +20,6 @@ const PostSingle = ({ post }) => {
               />
             )}
 
-            {console.log({ post })}
             {markdownify(post?.name_fa, "h1", "h2 mb-6 mt-6 text-center")}
 
             <div className="content mb-16 text-left">

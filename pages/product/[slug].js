@@ -17,6 +17,7 @@ import { useRouter } from "next/router";
 function ProductPage({ data }) {
   let keywords = "";
   data?.tags?.map((t) => (keywords = keywords + " | " + t));
+
   return (
     <Base
       title={data?.title}
