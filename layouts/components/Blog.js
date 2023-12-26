@@ -80,8 +80,8 @@ const Blog = ({ blogs }) => {
                         href={`/blogs/${post.slug}`}
                         className="block hover:text-primary"
                       >
-                        <h3 className={`h6 mb-2 mt-4 block hover:text-primary`}>
-                          {post.name}
+                        <h3 className={`h6 mb-8 mt-4 block hover:text-primary`}>
+                          {post?.name_fa}
                         </h3>
                       </Link>
                     </h2>

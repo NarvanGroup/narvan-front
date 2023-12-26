@@ -114,8 +114,12 @@
     padding-bottom: 500px;
     overflow-x: hidden;
     
+    @media (max-width: 1000px) {
+      padding-bottom: 650px;
+    }
+
     @media (max-width: 600px) {
-      padding-bottom: 700px;
+      padding-bottom: 750px;
     }
   }
 
