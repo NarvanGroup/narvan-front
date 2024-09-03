@@ -52,6 +52,21 @@ const Footer = () => {
                 alt=""
               />
             </Link>
+            <a
+              target="_blank"
+              href="https://trustseal.enamad.ir/?id=521977&Code=FSYNlZQGnKb52twZWj5r4M21L2jZ1LnX"
+            >
+              <Image
+                style={{
+                  borderRadius: "8px",
+                  marginBottom: "8px",
+                }}
+                src="/images/enamad.png"
+                width={150}
+                height={130}
+                alt="enamad"
+              />
+            </a>
             {markdownify(t("footer content"), "p", "mt-3 mb-6")}
             <Social source={social} className="social-icons mb-8" />
           </div>
