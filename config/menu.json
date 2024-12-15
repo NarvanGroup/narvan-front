@@ -8,17 +8,10 @@
       "name": "blog",
       "url": "/blogs"
     },
-    {
-      "name": "products",
-      "url": "/products/page/1"
-    },
+
     {
       "name": "contact",
       "url": "/contact"
-    },
-    {
-      "name": "FAQ",
-      "url": "/faq"
     }
   ],
   "footer": [
@@ -26,22 +19,8 @@
       "name": "Narvan E-commerce",
       "menu": [
         {
-          "text": "Products",
-          "url": "/products/page/1"
-        },
-        {
           "text": "Contact",
           "url": "/contact"
-        }
-      ]
-    },
-
-    {
-      "name": "Support",
-      "menu": [
-        {
-          "text": "FAQ",
-          "url": "/faq"
         }
       ]
     }

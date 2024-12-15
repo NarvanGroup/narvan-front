@@ -94,14 +94,28 @@ const Home = () => {
       <section className="section pb-[50px]">
         <div className="container">
           <div className="row text-center">
-            <div className="mx-auto lg:col-10">
-              <h1 className="mb-8 font-primary font-bold">
-                {t(`${banner?.title}`)}
-              </h1>
-              <h2 className="font-primary font-bold">
-                {t(`${banner?.subTitle}`)}
-              </h2>
-              <p className="mt-4">{markdownify(t(`${banner?.content}`))}</p>
+            <div
+              style={{
+                display: "flex",
+                gap: "16px",
+              }}
+              className="mx-auto "
+            >
+              <div
+                style={{
+                  maxWidth: "500px",
+                  marginTop: "rem",
+                }}
+              >
+                <h1 className="mb-8 font-primary font-bold">
+                  {t(`${banner?.title}`)}
+                </h1>
+                <h2 className="font-primary font-bold">
+                  {t(`${banner?.subTitle}`)}
+                </h2>
+                <p className="mt-4">{markdownify(t(`${banner?.content}`))}</p>
+              </div>
+
               {banner?.button.enable && (
                 <Link
                   className="btn btn-primary mt-4"
@@ -114,10 +128,15 @@ const Home = () => {
               <Image
                 className="mx-auto mt-12"
                 src={banner?.image}
-                width={750}
+                width={500}
                 height={390}
                 alt="banner image"
                 priority
+                style={{
+                  objectPosition: "center 25%",
+                  transform: "translate3d(0px, 0px, 0px) scale(1.1181, 1.1181)",
+                  borderRadius: "16px",
+                }}
               />
             </div>
           </div>
@@ -130,25 +149,36 @@ const Home = () => {
           <div className="text-center">
             <h2>{markdownify(t(NarvanProducts?.title))}</h2>
           </div>
-          <div className="mt-8 grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-2">
+          <div className="mt-8 grid gap-x-8 gap-y-6 sm:grid-cols-3 lg:grid-cols-3">
             {NarvanProducts?.categories.map((item, i) => (
-              <Link key={i} href="/products/page/1">
+              <Link key={i} href={item.link} target="_blank">
                 <div
-                  className="category-card rounded-xl bg-white p-5 pb-8 text-center"
-                  key={`product-${i}`}
+                  className="text-center"
                   style={{
-                    backgroundImage: `url(${item?.image})`,
+                    position: "relative",
                   }}
                 >
+                  <div
+                    className="category-card rounded-xl bg-white p-5 pb-8 text-center"
+                    key={`product-${i}`}
+                    style={{
+                      backgroundImage: `url(${item?.image})`,
+                      filter: "contrast(0.5)",
+                      "&:hover": {
+                        filter: "none",
+                      },
+                    }}
+                  ></div>
                   <div className="category-title mt-4 p-16">
                     {markdownify(t(item.name), "h3", "h5")}
+                    {markdownify(t(item.content), "h6", "h6")}
                   </div>
                 </div>
               </Link>
             ))}
           </div>
         </div>
-        <ProductsSwiper products={productsList} />
+        {/* <ProductsSwiper products={productsList} /> */}
       </section>
 
       {/* Features */}
@@ -175,7 +205,7 @@ const Home = () => {
                 }
                 <div className="mt-4">
                   {markdownify(t(item.name), "h3", "h5")}
-                  <p className="mt-3">{t(item.content)}</p>
+                  {/* <p className="mt-3">{t(item.content)}</p> */}
                 </div>
               </div>
             ))}
@@ -254,7 +284,7 @@ const Home = () => {
       })}
 
       {/* workflow */}
-      <section className="section direction-column flex items-center justify-center pb-0">
+      {/* <section className="section direction-column flex items-center justify-center pb-0">
         <div className="mb-8 text-center">
           {markdownify(
             t(workflow.title),
@@ -270,7 +300,7 @@ const Home = () => {
           width={900}
           height={400}
         />
-      </section>
+      </section> */}
 
       <Blog blogs={blogs} />
 

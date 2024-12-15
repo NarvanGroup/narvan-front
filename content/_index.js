@@ -1,8 +1,8 @@
 export const banner = {
   title: "Narvan",
-  subTitle: "Your Trusted Partner in Global Trade",
+  subTitle: "banner subtitle",
   content: "banner content",
-  image: "/images/banner1.jpg",
+  image: "/images/company.jpg",
   button: { label: "Contact Us", link: "/contact" },
 };
 
@@ -10,14 +10,22 @@ export const NarvanProducts = {
   title: "products",
   categories: [
     {
-      name: "Industrial equipment",
-      image: "/images/lasercat.jpg",
-      content: "Global Reach Text}",
+      name: "Kadoham",
+      image: "/images/kadohamBanner.png",
+      content: "A new look on gift registry",
+      link: "https://kadoham.com",
     },
     {
-      name: "Hardware",
-      image: "/images/hardwarecat.avif",
-      content: "Expert Team Text",
+      name: "Shenasban",
+      image: "/images/shenasban.png",
+      content: "Safety for everyone",
+      link: "https://shenasban.ir",
+    },
+    {
+      name: "Bulkino",
+      image: "/images/bulkino-min.png",
+      content: "Messaging in your hands",
+      link: "https://bulkino.com",
     },
   ],
 };
@@ -60,46 +68,39 @@ export const feature = {
 
 export const services = [
   {
-    title: "Why Narvan",
+    title: "kadoham Title",
 
-    content: "Why Narvan Text",
-    images: ["/images/whynarvan.jpg"],
+    content: "kadoham Text",
+    images: ["/images/kadohamBanner.png"],
     button: {
       enable: true,
-      label: "contact",
-      link: "/contact",
+      label: "k button",
+      link: "https://kadoham.com",
+    },
+    items: ["kadoham point 1", "kadoham point 2", "kadoham point 3"],
+  },
+
+  {
+    title: "Shenasban Title",
+    content: "Shenasban Text",
+    images: ["/images/shenasban.png"],
+    items: ["Shenasban point 1", "Shenasban point 2", "Shenasban point 3"],
+    button: {
+      enable: true,
+      label: "Shenasban button",
+      link: "https://shenasban.ir",
     },
   },
 
   {
-    title: "Import to Iran",
-    content: "Import to Iran Text",
-    images: ["/images/import1.jpg"],
+    title: "Bulkino Title",
+    content: "Bulkino Text",
+    images: ["/images/bulkino-min.png"],
+    items: ["Bulkino point 1", "Bulkino point 2", "Bulkino point 3"],
     button: {
       enable: true,
-      label: "contact",
-      link: "/contact",
-    },
-  },
-
-  {
-    title: "Clearance",
-    content: "Clearance Text",
-    images: ["/images/clearance.jpg"],
-    button: {
-      enable: true,
-      label: "contact",
-      link: "/contact",
-    },
-  },
-  {
-    title: "Recive",
-    content: "Recieve Text",
-    images: ["/images/recieve.jpg"],
-    button: {
-      enable: false,
-      label: "Check it out",
-      link: "/contact",
+      label: "Bulkino button",
+      link: "https://bulkino.ir",
     },
   },
 ];
@@ -113,7 +114,7 @@ export const workflow = {
 export const call_to_action = {
   title: "Get Started Today",
   content: "call to action text",
-  image: "/images/callAction.jpg",
+  image: "/images/us.jpg",
   button: {
     enable: true,
     label: "contact",

@@ -1,7 +1,7 @@
 ---
 banner:
   title: Narvan
-  subTitle: Your Trusted Partner in Global Trade
+  subTitle: banner subtitle
   content: banner content
   image: /images/banner1.jpg
   button:

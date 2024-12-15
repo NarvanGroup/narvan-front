@@ -1,6 +1,6 @@
 // section style
 .section {
-  @apply pt-[70px] pb-[70px];
+  @apply pb-[70px] pt-[70px];
 }
 
 // container
@@ -13,9 +13,6 @@
   bottom: 0;
   right: 0;
   left: 0;
-
-
-  
 }
 
 // form style
@@ -50,7 +47,7 @@
 
 // content style
 .content {
-  @apply prose max-w-none prose-headings:font-bold prose-h1:mb-4 prose-h1:text-h1-sm prose-h2:mb-4 prose-h2:mt-4 prose-h2:text-h2-sm prose-h3:mt-4 prose-h3:text-h3-sm prose-h4:mt-4 prose-h5:mb-4 prose-h5:text-base prose-h6:mb-6 prose-h6:text-[15px] prose-a:no-underline hover:prose-a:text-primary prose-blockquote:border-primary prose-blockquote:py-1 prose-blockquote:px-4 prose-ol:pl-4 prose-ul:list-none prose-ul:pl-0 prose-hr:my-5 md:prose-h1:text-h1 md:prose-h2:text-h2 md:prose-h3:text-h3;
+  @apply prose max-w-none prose-headings:font-bold prose-h1:mb-4 prose-h1:text-h1-sm prose-h2:mb-4 prose-h2:mt-4 prose-h2:text-h2-sm prose-h3:mt-4 prose-h3:text-h3-sm prose-h4:mt-4 prose-h5:mb-4 prose-h5:text-base prose-h6:mb-6 prose-h6:text-[15px] prose-a:no-underline hover:prose-a:text-primary prose-blockquote:border-primary prose-blockquote:px-4 prose-blockquote:py-1 prose-ol:pl-4 prose-ul:list-none prose-ul:pl-0 prose-hr:my-5 md:prose-h1:text-h1 md:prose-h2:text-h2 md:prose-h3:text-h3;
 
   ul {
     li {
@@ -67,15 +64,14 @@
   @apply transition-all duration-200 ease-in-out hover:shadow;
 }
 
-
 //category card
 .category-card {
   // @apply transition-all duration-200 ease-in-out hover:shadow;
   @apply transition-all duration-200 ease-in-out hover:shadow;
   border-radius: 10px;
   height: 280px;
-  box-shadow: 2px 2px 20px rgba(0,0,0,.1);
-  background-size: cover!important;
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.1);
+  background-size: cover !important;
   background-position: center;
   position: relative;
   cursor: pointer;
@@ -91,9 +87,10 @@
   display: block;
   width: 100%;
   z-index: 2;
-  h3 {
-    color: #fff;
-  }
+  // h3,
+  // h6 {
+  //   color: #fff;
+  // }
 }
 
 //swiper pagination
@@ -150,7 +147,6 @@
 
 //contact
 .contact-list {
-  
   a {
     @apply font-semibold text-dark;
   }
