@@ -3,27 +3,27 @@ title: Frequently Asked Questions
 layout: faq
 draft: false
 faqs:
-  - title: faq title 1
+  - title: What Does Your Import-Export Company Specialize In?
     answer: faq answer 1
 
-  - title:  faq title    
+  - title: How Can I Start Importing or Exporting with Your Company?
     answer: faq answer 2
 
-  - title:  faq title    
+  - title: What Are the Benefits of Working with Your Company?
     answer: faq answer 3
 
-  - title:  faq title       
-   answer: faq answer 4
+  - title: What Countries Do You Operate In?
+    answer: faq answer 4
 
-  - title:  faq title    
+  - title: Can You Help Me Find Suppliers or Buyers?
     answer: faq answer 5
 
-  - title:  faq title    ?
+  - title: What Are Your Payment and Pricing Terms?
     answer: faq answer 6
 
-  - title:  faq title     
+  - title: How Long Does the Import or Export Process Typically Take?
     answer: faq answer 7
 
-  - title:  faq title    
+  - title: Do You Provide Support and Assistance After the Import or Export Process?
     answer: faq answer 8
 ---
