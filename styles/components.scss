@@ -75,8 +75,10 @@
   background-position: center;
   position: relative;
   cursor: pointer;
+  filter: contrast(0.8);
   &:hover {
     color: #292929;
+    filter: none;
   }
 }
 

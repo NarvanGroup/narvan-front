@@ -15,10 +15,8 @@ import {
   TruckTime,
   Diamonds,
 } from "iconsax-react";
-import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { parseMDX } from "@lib/utils/mdxParser";
 import Blog from "@layouts/components/Blog";
 import { getProductsService } from "api/services/products";
 import { getBlogsService } from "api/services/blogs";
@@ -28,10 +26,11 @@ import {
   call_to_action,
   feature,
   services,
-  workflow,
 } from "content/_index";
-import { ProductsSwiper } from "@layouts/components/ProductsSwiper";
 import { useEffect, useState } from "react";
+// import "./index.module.scss";
+
+import classes from "./index.module.scss";
 
 const { title } = config.site;
 
@@ -94,17 +93,10 @@ const Home = () => {
       <section className="section pb-[50px]">
         <div className="container">
           <div className="row text-center">
-            <div
-              style={{
-                display: "flex",
-                gap: "16px",
-              }}
-              className="mx-auto "
-            >
+            <div className={`${classes.homeBanner} mx-auto`}>
               <div
                 style={{
                   maxWidth: "500px",
-                  marginTop: "rem",
                 }}
               >
                 <h1 className="mb-8 font-primary font-bold">
@@ -153,7 +145,7 @@ const Home = () => {
             {NarvanProducts?.categories.map((item, i) => (
               <Link key={i} href={item.link} target="_blank">
                 <div
-                  className="text-center"
+                  className="category-card text-center"
                   style={{
                     position: "relative",
                   }}
@@ -163,10 +155,6 @@ const Home = () => {
                     key={`product-${i}`}
                     style={{
                       backgroundImage: `url(${item?.image})`,
-                      filter: "contrast(0.5)",
-                      "&:hover": {
-                        filter: "none",
-                      },
                     }}
                   ></div>
                   <div className="category-title mt-4 p-16">

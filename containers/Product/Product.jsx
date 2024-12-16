@@ -1,6 +1,6 @@
 // import { getProductsService } from "@/api/services/productServices";
 
-import { markdownify, plainify } from "@lib/utils/textConverter";
+import { markdownify } from "@lib/utils/textConverter";
 import { useTranslation } from "next-i18next";
 import classes from "./product.module.scss";
 import Image from "next/image";
