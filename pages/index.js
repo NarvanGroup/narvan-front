@@ -141,7 +141,7 @@ const Home = () => {
           <div className="text-center">
             <h2>{markdownify(t(NarvanProducts?.title))}</h2>
           </div>
-          <div className="mt-8 grid gap-x-8 gap-y-6 sm:grid-cols-3 lg:grid-cols-3">
+          <div className="mt-8 grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-2">
             {NarvanProducts?.categories.map((item, i) => (
               <Link key={i} href={item.link} target="_blank">
                 <div

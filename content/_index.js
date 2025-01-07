@@ -21,12 +21,12 @@ export const NarvanProducts = {
       content: "Safety for everyone",
       link: "https://shenasban.ir",
     },
-    {
-      name: "Bulkino",
-      image: "/images/bulkino-min.png",
-      content: "Messaging in your hands",
-      link: "https://bulkino.com",
-    },
+    // {
+    //   name: "Bulkino",
+    //   image: "/images/bulkino-min.png",
+    //   content: "Messaging in your hands",
+    //   link: "https://bulkino.com",
+    // },
   ],
 };
 
@@ -92,17 +92,17 @@ export const services = [
     },
   },
 
-  {
-    title: "Bulkino Title",
-    content: "Bulkino Text",
-    images: ["/images/bulkino-min.png"],
-    items: ["Bulkino point 1", "Bulkino point 2", "Bulkino point 3"],
-    button: {
-      enable: true,
-      label: "Bulkino button",
-      link: "https://bulkino.ir",
-    },
-  },
+  // {
+  //   title: "Bulkino Title",
+  //   content: "Bulkino Text",
+  //   images: ["/images/bulkino-min.png"],
+  //   items: ["Bulkino point 1", "Bulkino point 2", "Bulkino point 3"],
+  //   button: {
+  //     enable: true,
+  //     label: "Bulkino button",
+  //     link: "https://bulkino.ir",
+  //   },
+  // },
 ];
 
 export const workflow = {
