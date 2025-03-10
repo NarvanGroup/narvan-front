@@ -108,11 +108,12 @@ const Header = () => {
               className={`btn btn-primary-phone m-1 p-2 ${
                 router.locale !== "fa" && "english-font"
               }`}
-              href={`tel:+989306057083`}
+              href={`tel:02125917072`}
               target="_blank"
               rel="noreferrer"
+              style={{ direction: "ltr" }}
             >
-              09306057083
+              021 2591 7072
             </a>
             {enable && (
               <li className="md:hidden">

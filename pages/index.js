@@ -25,6 +25,7 @@ import {
   banner,
   call_to_action,
   feature,
+  partners,
   services,
 } from "content/_index";
 import { useEffect, useState } from "react";
@@ -167,6 +168,42 @@ const Home = () => {
           </div>
         </div>
         {/* <ProductsSwiper products={productsList} /> */}
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <div className="text-center">
+            <h2>{markdownify(t(partners.title))}</h2>
+          </div>
+          <div className="mt-8 grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-2">
+            {/* <Swiper
+              modules={[Autoplay, Pagination]}
+              pagination={{ clickable: true }}
+              autoplay={{
+                delay: 5000,
+                disableOnInteraction: false,
+              }}
+            > */}
+            {/* Slides */}
+            {partners?.partners?.map((slide, index) => (
+              // <SwiperSlide key={index}>
+              <Link
+                href={slide?.button?.link}
+                className="cta-link inline-flex items-center justify-center text-primary"
+              >
+                <Image
+                  // style={{ borderRadius: "10px" }}
+                  src={slide?.images[0]}
+                  alt={`Partner Image ${index + 1}`}
+                  width={90} // Adjusted for better visibility
+                  height={90} // Adjusted for better visibility
+                />
+              </Link>
+              // </SwiperSlide>
+            ))}
+            {/* </Swiper> */}
+          </div>
+        </div>
       </section>
 
       {/* Features */}

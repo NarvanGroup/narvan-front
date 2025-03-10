@@ -2,7 +2,7 @@ export const banner = {
   title: "Narvan",
   subTitle: "banner subtitle",
   content: "banner content",
-  image: "/images/company.jpg",
+  image: "/images/banner1.svg",
   button: { label: "Contact Us", link: "/contact" },
 };
 
@@ -114,10 +114,32 @@ export const workflow = {
 export const call_to_action = {
   title: "Get Started Today",
   content: "call to action text",
-  image: "/images/us.jpg",
+  image: "/images/contact.svg",
   button: {
     enable: true,
     label: "contact",
     link: "/contact",
   },
+};
+
+export const partners = {
+  title: "clients",
+  partners: [
+    {
+      images: ["/images/funplus.jpg"],
+      button: {
+        enable: true,
+        label: "k button",
+        link: "https://funplus.com",
+      },
+    },
+    {
+      images: ["/images/funplus.png"],
+      button: {
+        enable: true,
+        label: "k button",
+        link: "https://www.meitu.com",
+      },
+    },
+  ],
 };
